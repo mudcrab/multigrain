@@ -1,0 +1,103 @@
+div#tabs {
+	max-width: 100%;
+	border-bottom: 1px solid #ccc;
+	background: #f3f3f3;
+
+	ul#chat-tabs {
+		line-height: 45px;
+		font-size: 11pt;
+		margin: 0;
+		list-style: none;
+
+		li { float: left; }
+		li.chat-tab {
+			// color: #fff;
+			padding: 0 10px;
+
+			&#new-chat {
+
+			}
+			&.active {
+				// background: #111;
+			}
+			&:hover {
+				color: #ccc;
+			}
+		}
+
+	}
+
+}
+
+div#chatwindow {
+	max-width: 100%;
+
+	div.column {
+		width: 100%;
+		padding: 0;
+
+		ul#display {
+			width: 100%;
+			height: 100%;
+			overflow-y: auto;
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			font-size: 9pt;
+
+			li {
+				padding: 0 3px;
+				margin: 0;
+				&.raw {
+					color: #ccc;
+					font-style: italic;
+					font-size: 8pt;
+				}
+				span.from {
+					font-style: italic;
+					font-weight: 100;
+					color: #bbb;
+				}
+				span.to {
+					color: #111;
+				}
+			}
+		}
+	}
+}
+div#chatinput {
+	max-width: 100%;
+	border-top: 1px solid #ccc;
+	background: #f3f3f3;
+
+	div#username {
+		border: 1px solid #cccccc;
+		// -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+		// box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+		border-right: none;
+		margin: 5px 0;
+		height: 37px;
+		line-height: 37px;
+		border-top-left-radius: 3px;
+		border-bottom-left-radius: 3px;
+		text-align: right;
+		font-weight: bold;
+		text-transform: uppercase;
+		padding-right: 10px;
+		background: #fff;
+		font-size: 10pt;
+	}
+	input#inpt {
+		width: calc(100% - 5px);
+		border-top-right-radius: 3px;
+		border-bottom-right-radius: 3px;
+	}
+	div.columns {
+		padding: 0;
+
+		input {
+			margin-bottom: 0;
+			margin: 5px 0;
+		}
+	}
+}

@@ -1,0 +1,48 @@
+<!doctype html>
+<html class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>MULTIGRAIN</title>
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/foundation.css" />
+		<link rel="stylesheet" href="css/multigrain.css" />
+		<script src="js/vendor/modernizr.js"></script>
+	</head>
+	<body>
+		
+		<div class="row collapse" id="tabs">
+			<div class="large-12 column">
+				<ul class="left clearfix" id="chat-tabs">
+					<li class="chat-tab">#chan</li>
+					<li class="divider"></li>
+					<li class="chat-tab active">#chan</li>
+					<li class="divider"></li>
+					<li class="chat-tab" id="new-chat"><i class="fa fa-plus"></i></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="row" id="chatwindow">
+			<div class="large-12 column" id="chat">
+				<ul id="display"></ul>
+			</div>
+		</div>
+		<div class="row collapse" id="chatinput">
+			<div class="medium-1 small-1 columns clearfix" id="uname-holder">
+				<div id="username" class="right">username</div>
+			</div>
+			<div class="large-11 small-11 columns">
+				<input type="text" placeholder="Find Stuff" id="inpt">
+			</div>
+		</div>
+		
+		<script src="js/vendor/jquery.js"></script>
+		<script src="js/vendor/minivents.min.js"></script>
+		<script src="js/foundation.min.js"></script>
+		<script src="js/multigrain.js"></script>
+		<script>
+			$(document).foundation();
+		</script>
+	</body>
+</html>
