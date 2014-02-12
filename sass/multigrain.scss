@@ -1,103 +1,189 @@
-div#tabs {
-	max-width: 100%;
-	border-bottom: 1px solid #ccc;
-	background: #f3f3f3;
-
-	ul#chat-tabs {
-		line-height: 45px;
-		font-size: 11pt;
-		margin: 0;
-		list-style: none;
-
-		li { float: left; }
-		li.chat-tab {
-			// color: #fff;
-			padding: 0 10px;
-
-			&#new-chat {
-
-			}
-			&.active {
-				// background: #111;
-			}
-			&:hover {
-				color: #ccc;
-			}
-		}
-
-	}
-
+@mixin normal {
+	font-family: 'Open Sans', sans-serif;
 }
 
-div#chatwindow {
-	max-width: 100%;
+$big: 1.4em;
+$smaller: 0.8em;
 
-	div.column {
-		width: 100%;
-		padding: 0;
+@mixin translate-prop($prop, $speed) {
+	-webkit-transition: $prop $speed + ms linear;
+	-moz-transition: $prop $speed + ms linear;
+	-ms-transition: $prop $speed + ms linear;
+	-o-transition: $prop $speed + ms linear;
+	transition: $prop $speed + ms linear;
+}
+@mixin lineheight($h) {	
+	height: $h + px;
+	line-height: $h + px;
+}
+@mixin reset {
+	margin: 0;
+	padding: 0;
+}
+// colors
 
-		ul#display {
-			width: 100%;
-			height: 100%;
-			overflow-y: auto;
+$border: #eee;
+$light: #f3f3f3;
+$dark: #212121;
+$red: rgba(red, 0.7);
+$blue: #6BCEED;
+
+html, body {
+	height: 100%;
+}
+
+body {
+	background: #f3f3f3;
+	@include normal;
+	color: $dark;
+	overflow-y: hidden;
+}
+
+.cf:before,
+.cf:after {
+	content: " ";
+	display: table;
+}
+.cf:after {
+	clear: both;
+}
+
+.left { float: left; }
+.right { float: right; }
+
+
+header#header {
+	width: 100%;
+	height: 45px;
+	border-bottom: 1px solid $border;
+	background: #fff;
+	box-shadow: 0px 0px 3px rgba($dark, 0.4);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+
+	div#channel-select {
+		line-height: 45px;
+		width: 45px;
+		font-size: 10pt;
+		text-align: center;
+		border-right: 1px solid $border;
+	}
+
+	ul {
+
+		&#channel-tabs, &#settings { 
+			@include reset;
 			list-style: none;
-			padding: 0;
-			margin: 0;
-			font-size: 9pt;
 
 			li {
-				padding: 0 3px;
-				margin: 0;
-				&.raw {
-					color: #ccc;
-					font-style: italic;
-					font-size: 8pt;
+				float: left;
+				@include lineheight(44);
+				@include translate-prop(all, 100);
+				border-top: 1px solid transparent;
+
+				&:hover {
+					border-top-color: rgba($blue, 1);
 				}
-				span.from {
-					font-style: italic;
-					font-weight: 100;
-					color: #bbb;
+			}
+		}
+		
+		&#channel-tabs {
+			font-size: 11pt;
+			text-transform: uppercase;
+			li {
+				padding: 0 15px;
+				border-right: 1px solid $border;
+
+				span {
+					&.mentions {
+						margin-left: 15px;
+						display: none;
+						padding: 0 5px;
+						&.active { display: inline; }
+					}
 				}
-				span.to {
-					color: #111;
+
+				i {
+					margin-left: 15px;
+					font-size: 10pt;
 				}
+
+				&:hover {
+					i {
+						color: $red;
+					}
+				}
+			}
+		}
+
+		&#settings {
+			font-size: 10pt;
+			text-align: center;
+
+			li {
+				width: 45px;
+				border-left: 1px solid $border;
 			}
 		}
 	}
 }
-div#chatinput {
-	max-width: 100%;
-	border-top: 1px solid #ccc;
-	background: #f3f3f3;
 
-	div#username {
-		border: 1px solid #cccccc;
-		// -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-		// box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-		border-right: none;
-		margin: 5px 0;
-		height: 37px;
-		line-height: 37px;
-		border-top-left-radius: 3px;
-		border-bottom-left-radius: 3px;
+section#chat-display {
+
+	position: absolute;
+	top: 45px;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	overflow-y: auto;
+
+	section#nicks {
+		width: 235px;
 		text-align: right;
-		font-weight: bold;
-		text-transform: uppercase;
-		padding-right: 10px;
-		background: #fff;
-		font-size: 10pt;
 	}
-	input#inpt {
-		width: calc(100% - 5px);
-		border-top-right-radius: 3px;
-		border-bottom-right-radius: 3px;
-	}
-	div.columns {
-		padding: 0;
 
-		input {
-			margin-bottom: 0;
-			margin: 5px 0;
+	section#chat {
+
+	}
+
+}
+
+footer#footer {
+	width: 100%;
+	height: 50px;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	background: #fff;
+	border-top: 1px solid $border;
+
+	div {
+
+		&#username {
+			width: 235px;
+			@include lineheight(50);
+			text-align: right;
+			padding-right: 10px;
 		}
+
+		&#input-wrap {
+
+			input {
+				@include reset;
+				@include translate-prop(all, 100);
+				height: 30px;
+				margin: 10px 0;
+				border: 1px solid $border;
+
+				&:focus {
+					outline: none;
+					box-shadow: 0 0 7px rgba($blue, 0.6);
+					border-color: rgba($blue, 0.4);
+				}
+			}
+		}
+
 	}
 }

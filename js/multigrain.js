@@ -125,13 +125,23 @@ Socket.prototype.createSendObject = function(str)
 	return JSON.stringify(m);
 };
 
+function adjustSizes()
+{
+	var w = $(window).width() - $('#username').width() - 20;
+	$('#chat-input').width( w );
+	$('#chat').width( w );
+
+	$('#chat-display').height( $(window).height() - $('#header').height() - $('#footer').height() );
+};
+
 $(function() {
-	$('#chat').height($(window).height() - 95);
-	$('#username').width( $('#uname-holder').width() - 15 );
-	var socket = new Socket('192.168.1.77', 8081);
+	adjustSizes();
+	/*$('#chat').height($(window).height() - 95);
+	$('#username').width( $('#uname-holder').width() - 15 );*/
+	/*var socket = new Socket('192.168.1.77', 8081);
 	socket.connect(function() {
 		socket.auth('jk', 'asdf1234');
-	});
+	});*/
 
 	events.on('authenticated', function(data) {
 		console.log(data);
@@ -179,6 +189,7 @@ $(function() {
 	
 });
 $(window).resize(function() {
-	$('#chat').height($(window).height() - 95);
-	$('#username').width( $('#uname-holder').width() - 15 );
+	adjustSizes();
+	/*$('#chat').height($(window).height() - 95);
+	$('#username').width( $('#uname-holder').width() - 15 );*/
 });

@@ -5,44 +5,44 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>MULTIGRAIN</title>
 		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-		<link rel="stylesheet" href="css/foundation.css" />
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,600,700,800,300' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="css/multigrain.css" />
 		<script src="js/vendor/modernizr.js"></script>
 	</head>
 	<body>
-		
-		<div class="row collapse" id="tabs">
-			<div class="large-12 column">
-				<ul class="left clearfix" id="chat-tabs">
-					<li class="chat-tab">#chan</li>
-					<li class="divider"></li>
-					<li class="chat-tab active">#chan</li>
-					<li class="divider"></li>
-					<li class="chat-tab" id="new-chat"><i class="fa fa-plus"></i></li>
-				</ul>
+		<header id="header" class="cf">
+			<div id="channel-select" class="left">
+				<i class="fa fa-desktop"></i>
 			</div>
-		</div>
+			<ul id="channel-tabs" class="left cf">
+				<li><span class="channel">#fedora</span><span class="mentions"></span><i class="fa fa-times"></i></li>
+				<li><span class="channel">#ruby</span><span class="mentions"></span><i class="fa fa-times"></i></li>
+				<li><span class="channel">##javascript</span><span class="mentions active">3</span><i class="fa fa-times"></i></li>
+			</ul>
+			<ul id="settings" class="right cf">
+				<li><i class="fa fa-users"></i></li>
+				<li><i class="fa fa-cog"></i></li>
+			</ul>
+		</header>
 
-		<div class="row" id="chatwindow">
-			<div class="large-12 column" id="chat">
-				<ul id="display"></ul>
+		<section id="chat-display">
+			<section id="nicks" class="left">
+				<ul>
+					<li>asd</li>
+				</ul>
+			</section>
+			<section id="chat" class="left"></section>
+		</section>
+
+		<footer id="footer">
+			<div id="username" class="left">kohvihoor</div>
+			<div id="input-wrap" class="left">
+				<input type="text" id="chat-input" />
 			</div>
-		</div>
-		<div class="row collapse" id="chatinput">
-			<div class="medium-1 small-1 columns clearfix" id="uname-holder">
-				<div id="username" class="right">username</div>
-			</div>
-			<div class="large-11 small-11 columns">
-				<input type="text" placeholder="Find Stuff" id="inpt">
-			</div>
-		</div>
+		</footer>
 		
 		<script src="js/vendor/jquery.js"></script>
 		<script src="js/vendor/minivents.min.js"></script>
-		<script src="js/foundation.min.js"></script>
 		<script src="js/multigrain.js"></script>
-		<script>
-			$(document).foundation();
-		</script>
 	</body>
 </html>
