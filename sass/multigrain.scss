@@ -203,6 +203,7 @@ footer#footer {
 	left: 0;
 	background: #fff;
 	border-top: 1px solid $border;
+	box-shadow: 0 0 3px rgba($dark, 0.4);
 
 	div {
 
@@ -231,4 +232,37 @@ footer#footer {
 		}
 
 	}
+}
+
+@media only screen and (max-width: 767px) {
+    header {
+    	ul#channel-tabs {
+    		display: none;
+    	}
+    }
+    section#chat-display {
+    	ul#display {
+    		div.timestamp {
+    			display: none;
+    		}
+    		div.nick {
+    			float: none;
+    			width: 200px !important;
+    			text-align: left !important;
+    		}
+    		div.message {
+    			width: calc(90% - 20px) !important;
+    			margin-left: 10px;
+    		}
+    	}
+    }
+
+    footer#footer {
+    	div {
+    		&#username {
+    			width: 100px !important;
+    			overflow: hidden;
+    		}
+    	}
+    }
 }
