@@ -139,12 +139,57 @@ section#chat-display {
 	width: 100%;
 	overflow-y: auto;
 
-	section#nicks {
+	/* section#nicks {
 		width: 235px;
 		text-align: right;
 	}
 
 	section#chat {
+
+	} */
+
+	ul#display {
+
+		@include reset;
+		list-style: none;
+		font-size: 11pt;
+		text-align: center;
+
+		li.chatline {
+			max-width: 90%;
+			margin: 10px auto;
+
+			&.self {
+				color: #6F6F6F;
+				div.nick {
+					font-style: italic;
+				}
+			}
+
+			&.notice {
+				color: #dc0000;
+				div.nick {
+					font-weight: 600;
+				}
+			}
+
+			div.nick {
+				width: calc(10% - 10px);
+				text-align: right;
+				padding-right: 10px;
+			}
+
+			div.message {
+				width: calc(90% - 60px);
+				text-align: left;
+			}
+			div.timestamp {
+				// float: right;
+				width: 50px;
+				text-align: right;
+			}
+
+		}
 
 	}
 

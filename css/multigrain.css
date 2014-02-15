@@ -82,10 +82,42 @@ section#chat-display {
   left: 0;
   height: 100%;
   width: 100%;
-  overflow-y: auto; }
-  section#chat-display section#nicks {
-    width: 235px;
-    text-align: right; }
+  overflow-y: auto;
+  /* section#nicks {
+		width: 235px;
+		text-align: right;
+	}
+
+	section#chat {
+
+	} */ }
+  section#chat-display ul#display {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 11pt;
+    text-align: center; }
+    section#chat-display ul#display li.chatline {
+      max-width: 90%;
+      margin: 10px auto; }
+      section#chat-display ul#display li.chatline.self {
+        color: #6F6F6F; }
+        section#chat-display ul#display li.chatline.self div.nick {
+          font-style: italic; }
+      section#chat-display ul#display li.chatline.notice {
+        color: #dc0000; }
+        section#chat-display ul#display li.chatline.notice div.nick {
+          font-weight: 600; }
+      section#chat-display ul#display li.chatline div.nick {
+        width: calc(10% - 10px);
+        text-align: right;
+        padding-right: 10px; }
+      section#chat-display ul#display li.chatline div.message {
+        width: calc(90% - 60px);
+        text-align: left; }
+      section#chat-display ul#display li.chatline div.timestamp {
+        width: 50px;
+        text-align: right; }
 
 footer#footer {
   width: 100%;

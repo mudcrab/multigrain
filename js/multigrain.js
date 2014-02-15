@@ -132,6 +132,8 @@ function adjustSizes()
 	$('#chat').width( w );
 
 	$('#chat-display').height( $(window).height() - $('#header').height() - $('#footer').height() );
+	
+	// $('.message').width($(window).width() - $('.nick').width() - $('.timestamp').width())
 };
 
 $(function() {
