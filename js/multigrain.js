@@ -132,7 +132,9 @@ function adjustSizes()
 	$('#chat').width( w );
 
 	$('#chat-display').height( $(window).height() - $('#header').height() - $('#footer').height() );
-	
+	// $('.dialog .container').css('height', '100%');
+	// $('.dialog .container .content').height($('.dialog').height() - $('.dialog .title').height() - $('.actions').height() - 20);
+
 	// $('.message').width($(window).width() - $('.nick').width() - $('.timestamp').width())
 };
 
@@ -187,11 +189,72 @@ $(function() {
 		m.data = { server: { addr: arr[0], name: arr[1] } };
 		console.log(m)
 	}*/
-
+	var dialog = new Dialog('blah', 'lol', [{ title: 'OK', id: 'ok', pos: 'right', click: function() { console.log('blah') } }]);
 	
+	$('body').on('click', '#close-dialog', function() {
+		dialog.hide();
+	});
+
+	$('.dialog').show();
+
+	$('body').on('click', '#user-settings', function() {
+		// $('.dialog').show();
+		dialog.show();
+	});
+	
+	templateLoader('connect.html', function(template) {
+		dialog.setContent(template);
+	});
+
 });
 $(window).resize(function() {
 	adjustSizes();
 	/*$('#chat').height($(window).height() - 95);
 	$('#username').width( $('#uname-holder').width() - 15 );*/
 });
+
+var Dialog = function(title, content, buttons)
+{
+	this.dialogTitle = title;
+	this.dialogContent = content;
+	this.dialogButtons = buttons;
+
+	this.init();
+};
+
+Dialog.prototype.init = function()
+{
+	$('.dialog #dialog-title').text(this.dialogTitle);
+
+	// $('.dialog .container .content').html('this.dialogContent');
+	// $('.dialog .container .content').height($('.dialog').height() - $('.dialog .title').height() - $('.actions').height() - 20);
+	
+	this.dialogButtons.forEach(function(button) {
+		$('.dialog .container .actions .' + button.pos).append('<a id="' + button.id + '" href="#">' + button.title + '</a>')
+		$('body').on('click', '#' + button.id, function() { button.click() });
+	});
+};
+
+Dialog.prototype.show = function()
+{
+	$('.dialog').fadeIn();
+};
+Dialog.prototype.hide = function()
+{
+	$('.dialog').hide();
+};
+
+Dialog.prototype.setContent = function(content)
+{
+	$('.dialog .container .content').html(content);
+};
+
+var templateLoader = function(template, cb)
+{
+	$.ajax({ url: '/templates/' + template, async: false }).done(function(tpl) {
+		cb(tpl);
+	});
+	/*$.ajax({ url: paths.path + template, async: false }).done(function(tpl) {
+						Enitio.templates[file[0]].template = _.template(tpl);
+					});*/
+};

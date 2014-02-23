@@ -12,7 +12,7 @@
 	<body>
 		<header id="header" class="cf">
 			<div id="channel-select" class="left">
-				<i class="fa fa-desktop"></i>
+				<i class="fa fa-desktop" id="serverlist"></i>
 			</div>
 			<ul id="channel-tabs" class="left cf">
 				<li><span class="channel">#fedora</span><span class="mentions"></span><i class="fa fa-times"></i></li>
@@ -21,9 +21,29 @@
 			</ul>
 			<ul id="settings" class="right cf">
 				<li><i class="fa fa-users"></i></li>
-				<li><i class="fa fa-cog"></i></li>
+				<li id="user-settings"><i class="fa fa-cog"></i></li>
 			</ul>
 		</header>
+
+		<section class="dialog">
+			<section class="container">
+				<header class="title cf">
+					<div class="left" id="dialog-title"></div>
+					<div class="right"><i id="close-dialog" class="fa fa-times"></i></div>
+				</header>
+				<section class="content">
+
+				</section>
+				<footer class="actions cf">
+					<div class="left">
+						
+					</div>
+					<div class="right">
+
+					</div>
+				</footer>
+			</section>
+		</section>
 
 		<section id="chat-display" class="cf">
 			<ul id="display">

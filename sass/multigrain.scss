@@ -55,7 +55,6 @@ body {
 header#header {
 	width: 100%;
 	height: 45px;
-	border-bottom: 1px solid $border;
 	background: #fff;
 	box-shadow: 0px 0px 3px rgba($dark, 0.4);
 	position: fixed;
@@ -202,7 +201,6 @@ footer#footer {
 	bottom: 0;
 	left: 0;
 	background: #fff;
-	border-top: 1px solid $border;
 	box-shadow: 0 0 3px rgba($dark, 0.4);
 
 	div {
@@ -231,6 +229,20 @@ footer#footer {
 			}
 		}
 
+	}
+}
+
+input {
+	@include reset;
+	@include translate-prop(all, 100);
+	height: 30px;
+	margin: 10px 0;
+	border: 1px solid $border;
+
+	&:focus {
+		outline: none;
+		box-shadow: 0 0 7px rgba($blue, 0.6);
+		border-color: rgba($blue, 0.4);
 	}
 }
 
@@ -265,4 +277,55 @@ footer#footer {
     		}
     	}
     }
+}
+
+section.dialog {
+	position: fixed;
+	top: 46px;
+	left: 0;
+	width: 100%;
+	max-height: 50%;
+	overflow-y: hidden;
+	background: #fff;
+	border-bottom: $border;
+	z-index: 1000;
+	text-align: center;
+	box-shadow: 0 1px 2px rgba($dark, 0.4);
+	display: none;
+
+	section.container {
+		margin: auto;
+		text-align: left;
+		max-width: 1000px;
+		border-left: 1px solid $border;
+		border-right: 1px solid $border;
+
+		header.title {
+			@include lineheight(35);
+			text-transform: uppercase;
+			font-weight: 600;
+			padding: 0 10px;
+		}
+
+		section.content {
+			padding: 10px;
+			overflow-y: auto;
+		}
+
+		footer.actions {
+			@include lineheight(45);
+			padding: 0 10px;
+			border-top: 1px solid $border;
+
+			a, a:visited, a:active {
+				text-decoration: none;
+				text-transform: uppercase;
+				color: #000;
+				font-size: 11pt;
+				border: 1px solid $border;
+				padding: 3px 10px;
+				margin-left: 5px;
+			}
+		}
+	}
 }
