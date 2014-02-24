@@ -8,7 +8,6 @@ window.Cinder = window.Cinder || {};
 		this.router = null;
 		this.controllers = {};
 		this.templates = {};
-
 		cb.call(this);
 	};
 
@@ -102,9 +101,9 @@ window.Cinder = window.Cinder || {};
 		}
 	};
 
-	Controller.prototype.render = function(returnEl)
+	Controller.prototype.render = function(data)
 	{
-		return this.view;
+		return this.view();
 	};
 
 	cinder.App = App;
