@@ -38,7 +38,7 @@ window.Cinder = window.Cinder || {};
 				cb: routes[route]
 			});
 		}
-		
+
 		self.changeRoute();
 		window.onhashchange = function() {
 			self.changeRoute();
@@ -75,20 +75,34 @@ window.Cinder = window.Cinder || {};
 		return url;
 	};
 
-
-
 	var View = function()
 	{
 
 	};
 
-	var Controller = function(settings)
+	var Controller = function(settings, events)
 	{
 		this.view = settings.template;
 		this.partials = {};
+		this.events = events || {};
+		this.setEvents();
+		this.rendered = false;
 	};
 
-	Controller.prototype.render = function()
+	Controller.prototype.setEvents = function()
+	{
+		var self = this;
+		for(var event in this.events)
+		{
+			if(this.events.hasOwnProperty(event))
+			{
+				var ev = event.split(' ');
+				$('body').on(ev[0], ev[1], function(e) { self.events[event].call(self, e); });
+			}
+		}
+	};
+
+	Controller.prototype.render = function(returnEl)
 	{
 		return this.view;
 	};
