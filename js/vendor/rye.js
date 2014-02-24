@@ -81,7 +81,8 @@ window.Cinder = window.Cinder || {};
 
 	var Controller = function(settings, events)
 	{
-		this.view = settings.template;
+		if(settings)
+			this.view = settings.template || false;
 		this.partials = {};
 		this.events = events || {};
 		this.setEvents();
@@ -103,7 +104,8 @@ window.Cinder = window.Cinder || {};
 
 	Controller.prototype.render = function(data)
 	{
-		return this.view();
+		if(this.view)
+			return this.view();
 	};
 
 	cinder.App = App;

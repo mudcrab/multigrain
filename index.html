@@ -15,12 +15,10 @@
 				<i class="fa fa-desktop" id="serverlist"></i>
 			</div>
 			<ul id="channel-tabs" class="left cf">
-				<li><span class="channel">#fedora</span><span class="mentions"></span><i class="fa fa-times"></i></li>
-				<li><span class="channel">#ruby</span><span class="mentions"></span><i class="fa fa-times"></i></li>
-				<li><span class="channel">##javascript</span><span class="mentions active">3</span><i class="fa fa-times"></i></li>
+
 			</ul>
 			<ul id="settings" class="right cf">
-				<li><i class="fa fa-users"></i></li>
+				<li id="add"><i class="fa fa-users"></i></li>
 				<li id="user-settings"><i class="fa fa-cog"></i></li>
 			</ul>
 		</header>
@@ -29,10 +27,10 @@
 			<section class="container">
 				<header class="title cf">
 					<div class="left" id="dialog-title"></div>
-					<div class="right"><i id="close-dialog" class="fa fa-times"></i></div>
+					<div class="right" id="dialog-close"><i id="close-dialog" class="fa fa-times"></i></div>
 				</header>
 				<section class="content" id="dialog-content">
-
+					
 				</section>
 				<footer class="actions cf">
 					<div class="left">
@@ -47,90 +45,7 @@
 
 		<section id="chat-display" class="cf">
 			<ul id="display">
-				<li class="chatline cf">
-					<div class="left nick">some nick</div>
-					<div class="left message">
-						blah
-					</div>
-					<div class="right timestamp">14:49</div>
-				</li>
-				<li class="chatline cf self">
-					<div class="left nick">some nick</div>
-					<div class="left message">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, doloribus, praesentium, distinctio, iure autem hic eos laborum fuga delectus voluptates ab officiis qui magni id velit obcaecati debitis unde dolorum facere nesciunt ratione repellendus impedit repudiandae et pariatur. Omnis, totam voluptas modi praesentium porro dignissimos tenetur neque veritatis libero tempora?
-					</div>
-					<div class="right timestamp">14:49</div>
-				</li>
-				<li class="chatline cf notice">
-					<div class="left nick">some nick</div>
-					<div class="left message">
-						kohvihoor: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, accusamus.
-					</div>
-					<div class="right timestamp">14:49</div>
-				</li>
-				<li class="chatline cf">
-					<div class="left nick">some nick</div>
-					<div class="left message">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, accusamus.
-					</div>
-					<div class="right timestamp">14:49</div>
-				</li>
-				<li class="chatline cf">
-					<div class="left nick">some nick</div>
-					<div class="left message">
-						blah
-					</div>
-					<div class="right timestamp">14:49</div>
-				</li>
-				<li class="chatline cf self">
-					<div class="left nick">some nick</div>
-					<div class="left message">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, doloribus, praesentium, distinctio, iure autem hic eos laborum fuga delectus voluptates ab officiis qui magni id velit obcaecati debitis unde dolorum facere nesciunt ratione repellendus impedit repudiandae et pariatur. Omnis, totam voluptas modi praesentium porro dignissimos tenetur neque veritatis libero tempora?
-					</div>
-					<div class="right timestamp">14:49</div>
-				</li>
-				<li class="chatline cf notice">
-					<div class="left nick">some nick</div>
-					<div class="left message">
-						kohvihoor: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, accusamus.
-					</div>
-					<div class="right timestamp">14:49</div>
-				</li>
-				<li class="chatline cf">
-					<div class="left nick">some nick</div>
-					<div class="left message">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, accusamus.
-					</div>
-					<div class="right timestamp">14:49</div>
-				</li>
-				<li class="chatline cf">
-					<div class="left nick">some nick</div>
-					<div class="left message">
-						blah
-					</div>
-					<div class="right timestamp">14:49</div>
-				</li>
-				<li class="chatline cf self">
-					<div class="left nick">some nick</div>
-					<div class="left message">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, doloribus, praesentium, distinctio, iure autem hic eos laborum fuga delectus voluptates ab officiis qui magni id velit obcaecati debitis unde dolorum facere nesciunt ratione repellendus impedit repudiandae et pariatur. Omnis, totam voluptas modi praesentium porro dignissimos tenetur neque veritatis libero tempora?
-					</div>
-					<div class="right timestamp">14:49</div>
-				</li>
-				<li class="chatline cf notice">
-					<div class="left nick">some nick</div>
-					<div class="left message">
-						kohvihoor: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, accusamus.
-					</div>
-					<div class="right timestamp">14:49</div>
-				</li>
-				<li class="chatline cf">
-					<div class="left nick">some nick</div>
-					<div class="left message">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, accusamus.
-					</div>
-					<div class="right timestamp">14:49</div>
-				</li>
+
 			</ul>
 		</section>
 
@@ -146,5 +61,6 @@
 		<script src="js/vendor/tmpl.js"></script>
 		<script src="js/vendor/rye.js"></script>
 		<script src="js/multigrain.js"></script>
+		<script src="js/multigrain.ui.js"></script>
 	</body>
 </html>
