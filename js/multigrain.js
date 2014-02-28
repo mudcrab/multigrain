@@ -36,7 +36,8 @@ Multigrain.Controllers.Tabs.prototype.removeTabs = function()
 Multigrain.Controllers.Main = function(settings)
 {
 	this.events = {
-		'click #channel-select': this.handleConnections
+		'click #channel-select': this.handleConnections,
+		'click #user-settings': this.addLine,
 	};
 
 	Cinder.Controller.call(this, settings, this.events);
@@ -54,7 +55,12 @@ Multigrain.Controllers.Main.prototype.handleConnections = function(e)
 	console.log('asd')
 	var dialog = new Multigrain.ui.Dialog('blah', 'lol', [{ title: 'Connect', id: 'ok', pos: 'right', click: function() { console.log('blah') } }]);
 	dialog.setContent(Multigrain.App.templates.connect);
-	dialog.show();
+	dialog.open();
+};
+
+Multigrain.Controllers.Main.prototype.addLine = function()
+{
+	$('#display').append(Multigrain.App.templates.chatline({ type: 'regular', nick: 'blah', msg: 'Some message', timestamp: '00:12' }))
 };
 
 Multigrain.Controllers.Main.prototype.render = function()
@@ -75,6 +81,10 @@ Multigrain.App = new Cinder.App(function() {
 		'connect': {
 			path: '/templates/',
 			file: 'connect.html'
+		},
+		'chatline': {
+			path: '/templates/',
+			file: 'chatline.html'
 		}
 	};
 	this.loadTemplates(list);

@@ -23,16 +23,27 @@ Multigrain.ui.Dialog.prototype.init = function()
 	});
 
 	$('body').on('click', '#dialog-close', function() {
-		self.hide();
+		self.close();
 	});
 };
 
-Multigrain.ui.Dialog.prototype.show = function()
+Multigrain.ui.Dialog.prototype.open = function()
 {
 	$('.dialog').fadeIn();
+	this.onOpen();
 };
 
-Multigrain.ui.Dialog.prototype.hide = function()
+Multigrain.ui.Dialog.prototype.onOpen = function()
+{
+
+};
+
+Multigrain.ui.Dialog.prototype.onClose = function()
+{
+
+};
+
+Multigrain.ui.Dialog.prototype.close = function()
 {
 	$('.dialog').hide();
 };

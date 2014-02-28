@@ -94,11 +94,12 @@ window.Cinder = window.Cinder || {};
 		var self = this;
 		for(var event in this.events)
 		{
-			if(this.events.hasOwnProperty(event))
-			{
-				var ev = event.split(' ');
-				$('body').on(ev[0], ev[1], function(e) { self.events[event].call(self, e); });
-			}
+			var ev = event.split(' ');
+			$('body').on(ev[0], ev[1], (function(action) {
+				return function(e) {
+					self.events[action].call(self, e);
+				}
+			})(event));
 		}
 	};
 
