@@ -1,5 +1,7 @@
 window.Multigrain = window.Multigrain || { Controllers: {} };
 
+Multigrain.Events = new Events();
+
 Multigrain.router = new Cinder.Router({
 	'': function() {
 		var self = this;
@@ -9,6 +11,10 @@ Multigrain.router = new Cinder.Router({
 });
 
 Multigrain.App = new Cinder.App(function() {
+	
+	var self = this;
+	this.socket = null;
+
 	var list = {
 		'Blah': {
 			file: 'test.html'
@@ -24,15 +30,24 @@ Multigrain.App = new Cinder.App(function() {
 		}
 	};
 	this.loadTemplates('/app/templates/', list);
+
+	$('#login').click(function() {
+		self.socket = new Socket(Multigrain.Events, $("#server-select").val(), 1337);
+		self.socket.connect();
+
+		Multigrain.Events.on('connected', function() {
+			self.socket.auth($('#username').val(), $('#password').val());
+		});
+
+		Multigrain.Events.on('authenticated', function() {
+			$('#login-overlay-bgr').remove();
+		});
+	});
+
 });
 
 function adjustSizes()
 {
-	/*var w = $(window).width() - $('#username').width() - 20;
-	$('#chat-input').width( w );
-	$('#chat').width( w );
-
-	$('#chat-display').height( $(window).height() - $('#header').height() - $('#footer').height() );*/
 	$('#sidebar, #main').height($(window).height() - $('#header').height());
 	$('#main').width($(window).width() - $('#sidebar').width());
 	$('#main').css('left', $('#sidebar').width());

@@ -53,6 +53,60 @@ body {
 .right { float: right; }
 
 
+
+div#login-overlay-bgr {
+	background: rgba($dark, 0.9);
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 9999;
+
+	div#login-overlay {
+		text-align: center;
+		position: absolute;
+		top: calc(50% - 125px);
+		left: calc(50% - 200px);
+		width: 400px;
+		height: 250px;
+	
+		input, select {
+			width: 360px;
+			height: 40px;
+			margin: 0;
+			border: none;
+			padding-left: 10px;
+		}
+
+		input {
+			margin-top: 10px;
+			width: 350px;
+		}
+
+		div.btn {
+			margin: auto;
+			margin-top: 10px;
+			@include lineheight(40);
+			border: 1px solid $border;
+			text-transform: uppercase;
+			color: #fff;
+			width: 360px;
+			@include translate-prop(all, 100);
+			font-weight: 600;
+			cursor: pointer;
+
+			&:hover {
+				background: #f3f3f3;
+				color: $dark;
+			}
+		}
+
+	}
+
+}
+
+
 header#header {
 	width: 100%;
 	height: 45px;
@@ -63,7 +117,7 @@ header#header {
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: 10000;
+	z-index: 1000;
 
 	div#channel-select {
 		line-height: 45px;
@@ -335,6 +389,16 @@ input {
 }
 
 @media only screen and (max-width: 767px) {
+	section#sidebar {
+		@include translate-prop(all, 100);
+		left: -300px;
+		min-width: 0;
+		width: 0;
+
+		ul#channels, div#nick {
+			display: none;
+		}
+	}
     header {
     	ul#channel-tabs {
     		display: none;

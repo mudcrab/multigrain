@@ -11,6 +11,19 @@
 		<script src="vendor/modernizr.js"></script>
 	</head>
 	<body>
+		<div id="login-overlay-bgr">
+			<div id="login-overlay">
+				<div>
+					<select name="server-select" id="server-select">
+						<option value="localhost">localhost</option>
+						<option value="192.168.43.55">3G</option>
+					</select>
+				</div>
+				<div><input type="text" id="username" placeholder="Username" value="jk"></div>
+				<div><input type="password" id="password" placeholder="Password" value="asdf1234"></div>
+				<div class="btn" id="login">login</div>
+			</div>
+		</div>
 		<header id="header" class="cf">
 			<div id="channel-select" class="left">
 				<i class="fa fa-desktop" id="serverlist"></i>
@@ -70,7 +83,9 @@
 		</section>
 		
 		<script src="vendor/jquery.js"></script>
+		<script src="vendor/jquery.cookie.js"></script>
 		<script src="vendor/minivents.min.js"></script>
+		<script src="app/js/socket.js"></script>
 		<script src="vendor/tmpl.js"></script>
 		<script src="vendor/rye.js"></script>
 		<script src="app/js/controllers/main.js"></script>
