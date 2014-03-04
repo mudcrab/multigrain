@@ -28,11 +28,14 @@ Multigrain.App = new Cinder.App(function() {
 
 function adjustSizes()
 {
-	var w = $(window).width() - $('#username').width() - 20;
+	/*var w = $(window).width() - $('#username').width() - 20;
 	$('#chat-input').width( w );
 	$('#chat').width( w );
 
-	$('#chat-display').height( $(window).height() - $('#header').height() - $('#footer').height() );
+	$('#chat-display').height( $(window).height() - $('#header').height() - $('#footer').height() );*/
+	$('#sidebar, #main').height($(window).height() - $('#header').height());
+	$('#main').width($(window).width() - $('#sidebar').width());
+	$('#main').css('left', $('#sidebar').width());
 };
 
 $(function() {

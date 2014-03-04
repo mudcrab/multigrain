@@ -15,47 +15,59 @@
 			<div id="channel-select" class="left">
 				<i class="fa fa-desktop" id="serverlist"></i>
 			</div>
-			<ul id="channel-tabs" class="left cf">
-
-			</ul>
+			<div id="channel-message" class="left">
+				<span id="channel">##javascript</span>
+				<span id="separator">&bull;</span>
+				<span id="message">Can't Talk? Get Registered on FreeNode (HOWTO: http://ur1.ca/90niw) | ECMAScript, Javascript, JS *not* Java | Say: "!help" (or ask and wait) | Run: "!mdn foo" for docs on "foo" | Don't paste code in the channel</span>
+			</div>
 			<ul id="settings" class="right cf">
 				<li id="add"><i class="fa fa-users"></i></li>
 				<li id="user-settings"><i class="fa fa-cog"></i></li>
 			</ul>
 		</header>
 
-		<section class="dialog">
-			<section class="container">
-				<header class="title cf">
-					<div class="left" id="dialog-title"></div>
-					<div class="right" id="dialog-close"><i id="close-dialog" class="fa fa-times"></i></div>
-				</header>
-				<section class="content" id="dialog-content">
-					
-				</section>
-				<footer class="actions cf">
-					<div class="left">
-						
-					</div>
-					<div class="right">
-
-					</div>
-				</footer>
-			</section>
-		</section>
-
-		<section id="chat-display" class="cf">
-			<ul id="display">
-
+		<section id="sidebar">
+			<ul id="channels">
+				<li class="cf "><span class="channel left">#fedora</span><span class="close right"><i class="fa fa-times"></i></span></li>
+				<li class="cf"><span class="channel left">#fedora</span><span class="close right"><i class="fa fa-times"></i></span></li>
+				<li class="cf"><span class="channel left">#fedora</span><span class="close right"><i class="fa fa-times"></i></span></li>
+				<li class="cf"><span class="channel left">#fedora</span><span class="close right"><i class="fa fa-times"></i></span></li>
+				<li class="cf"><span class="channel left">#fedora</span><span class="close right"><i class="fa fa-times"></i></span></li>
 			</ul>
+			<div id="nick">kohvihoor</div>
 		</section>
 
-		<footer id="footer">
-			<div id="username" class="left">kohvihoor</div>
-			<div id="input-wrap" class="left">
-				<input type="text" id="chat-input" />
+		<section id="main">
+			<ul id="chat">
+				<li>
+					<p><span class="author">kohvihoor</span><span class="time">12:04:43</span></p>
+					<p class="message">
+						This is a message
+					</p>
+				</li>
+				<li class="notice">
+					<p><span class="author">kohvihoor</span><span class="time">12:04:43</span></p>
+					<p class="message">
+						This is a message
+					</p>
+				</li>
+				<li class="self">
+					<p><span class="author">kohvihoor</span><span class="time">12:04:43</span></p>
+					<p class="message">
+						This is a message
+					</p>
+				</li>
+				<li>
+					<p><span class="author">kohvihoor</span><span class="time">12:04:43</span></p>
+					<p class="message">
+						This is a message
+					</p>
+				</li>
+			</ul>
+			<div id="input">
+				<i class="fa fa-chevron-right"></i><input type="text">
 			</div>
-		</footer>
+		</section>
 		
 		<script src="vendor/jquery.js"></script>
 		<script src="vendor/minivents.min.js"></script>

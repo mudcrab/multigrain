@@ -24,23 +24,41 @@ body {
 header#header {
   width: 100%;
   height: 45px;
-  background: #fff;
-  box-shadow: 0px 0px 3px rgba(33, 33, 33, 0.4);
+  background: #303030;
+  color: #fff;
+  border-bottom: 1px solid #3d3d3d;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 10; }
+  z-index: 10000; }
   header#header div#channel-select {
     line-height: 45px;
     width: 45px;
     font-size: 10pt;
     text-align: center;
-    border-right: 1px solid #eeeeee; }
-  header#header ul#channel-tabs, header#header ul#settings {
+    border-right: 1px solid #3d3d3d; }
+  header#header div#channel-message {
+    height: 45px;
+    line-height: 45px;
+    padding-left: 15px;
+    font-size: 11pt;
+    overflow: hidden;
+    width: calc(100% - 160px); }
+    header#header div#channel-message span#channel {
+      font-weight: 600;
+      text-transform: uppercase; }
+    header#header div#channel-message span#separator {
+      padding: 0 5px;
+      font-size: 12pt; }
+    header#header div#channel-message span#message {
+      font-size: 10pt; }
+  header#header ul#settings {
     margin: 0;
     padding: 0;
-    list-style: none; }
-    header#header ul#channel-tabs li, header#header ul#settings li {
+    list-style: none;
+    font-size: 10pt;
+    text-align: center; }
+    header#header ul#settings li {
       float: left;
       height: 44px;
       line-height: 44px;
@@ -49,32 +67,84 @@ header#header {
       -ms-transition: all 100ms linear;
       -o-transition: all 100ms linear;
       transition: all 100ms linear;
-      border-top: 1px solid transparent; }
-      header#header ul#channel-tabs li:hover, header#header ul#settings li:hover {
-        border-top-color: #6bceed; }
-  header#header ul#channel-tabs {
-    font-size: 11pt;
-    text-transform: uppercase; }
-    header#header ul#channel-tabs li {
-      padding: 0 15px;
-      border-right: 1px solid #eeeeee; }
-      header#header ul#channel-tabs li span.mentions {
-        margin-left: 15px;
-        display: none;
-        padding: 0 5px; }
-        header#header ul#channel-tabs li span.mentions.active {
-          display: inline; }
-      header#header ul#channel-tabs li i {
-        margin-left: 15px;
-        font-size: 10pt; }
-      header#header ul#channel-tabs li:hover i {
-        color: rgba(255, 0, 0, 0.7); }
-  header#header ul#settings {
-    font-size: 10pt;
-    text-align: center; }
-    header#header ul#settings li {
+      border-top: 1px solid transparent;
       width: 45px;
-      border-left: 1px solid #eeeeee; }
+      border-left: 1px solid #3d3d3d; }
+      header#header ul#settings li:hover {
+        border-top-color: #6bceed; }
+
+section#sidebar {
+  position: absolute;
+  left: 0;
+  top: 45px;
+  width: 20%;
+  min-width: 300px;
+  background: #f3f3f3; }
+  section#sidebar ul#channels {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height: calc(100% - 45px); }
+    section#sidebar ul#channels li {
+      height: 45px;
+      line-height: 45px;
+      font-size: 11pt;
+      text-transform: uppercase;
+      padding: 0 10px;
+      border-bottom: 1px solid #dddddd; }
+  section#sidebar div#nick {
+    height: 45px;
+    line-height: 45px;
+    border-top: 1px solid #dddddd;
+    text-align: right;
+    padding-right: 10px;
+    background: #fff; }
+
+section#main {
+  position: absolute;
+  left: 20%;
+  top: 45px;
+  width: 80%; }
+  section#main ul#chat {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height: calc(100% - 45px);
+    background: #fff;
+    border-left: 1px solid #dddddd; }
+    section#main ul#chat li {
+      padding: 5px 10px; }
+      section#main ul#chat li p {
+        margin: 0;
+        padding: 0; }
+        section#main ul#chat li p span {
+          font-size: 10pt; }
+          section#main ul#chat li p span.time {
+            font-style: italic;
+            color: rgba(33, 33, 33, 0.3);
+            margin-left: 10px; }
+      section#main ul#chat li.self {
+        color: #6F6F6F; }
+        section#main ul#chat li.self span.author {
+          font-style: italic; }
+      section#main ul#chat li.notice {
+        color: #dc0000; }
+        section#main ul#chat li.notice span.author {
+          font-weight: 600; }
+  section#main div#input {
+    height: 45px;
+    line-height: 45px;
+    border-top: 1px solid #dddddd;
+    background: #fff; }
+    section#main div#input i {
+      width: 10px;
+      font-size: 10pt; }
+    section#main div#input input {
+      height: 25px;
+      width: calc(100% - 20px);
+      margin-top: 0px;
+      border: none;
+      border-bottom: 1px solid rgba(33, 33, 33, 0.3); }
 
 section#chat-display {
   position: absolute;
@@ -143,7 +213,7 @@ footer#footer {
     transition: all 100ms linear;
     height: 30px;
     margin: 10px 0;
-    border: 1px solid #eeeeee; }
+    border: 1px solid #dddddd; }
     footer#footer div#input-wrap input:focus {
       outline: none;
       box-shadow: 0 0 7px rgba(107, 206, 237, 0.6);
@@ -159,7 +229,7 @@ input {
   transition: all 100ms linear;
   height: 30px;
   margin: 10px 0;
-  border: 1px solid #eeeeee; }
+  border: 1px solid #dddddd; }
   input:focus {
     outline: none;
     box-shadow: 0 0 7px rgba(107, 206, 237, 0.6);
@@ -190,7 +260,7 @@ section.dialog {
   max-height: 50%;
   overflow-y: hidden;
   background: #fff;
-  border-bottom: #eeeeee;
+  border-bottom: #dddddd;
   z-index: 1000;
   text-align: center;
   box-shadow: 0 1px 2px rgba(33, 33, 33, 0.4);
@@ -199,8 +269,8 @@ section.dialog {
     margin: auto;
     text-align: left;
     max-width: 800px;
-    border-left: 1px solid #eeeeee;
-    border-right: 1px solid #eeeeee; }
+    border-left: 1px solid #dddddd;
+    border-right: 1px solid #dddddd; }
     section.dialog section.container header.title {
       height: 35px;
       line-height: 35px;
@@ -230,12 +300,12 @@ section.dialog {
       height: 45px;
       line-height: 45px;
       padding: 0 10px;
-      border-top: 1px solid #eeeeee; }
+      border-top: 1px solid #dddddd; }
       section.dialog section.container footer.actions a, section.dialog section.container footer.actions a:visited, section.dialog section.container footer.actions a:active {
         text-decoration: none;
         text-transform: uppercase;
         color: #000;
         font-size: 11pt;
-        border: 1px solid #eeeeee;
+        border: 1px solid #dddddd;
         padding: 3px 10px;
         margin-left: 5px; }
