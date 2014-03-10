@@ -17,22 +17,24 @@ Multigrain.App = new Cinder.App(function() {
 
 	var list = {
 		'Blah': {
-			file: 'test.html'
+			file: 'test.html.hbs'
 		},
 		'tab': {
-			file: 'tab.html'
+			file: 'tab.html.hbs'
 		},
 		'connect': {
-			file: 'connect.html'
+			file: 'connect.html.hbs'
 		},
 		'chatline': {
-			file: 'chatline.html'
+			file: 'chatline.html.hbs'
 		}
 	};
 	this.loadTemplates('/app/templates/', list);
 
-	$('#login').click(function() {
-		self.socket = new Socket(Multigrain.Events, $("#server-select").val(), 1337);
+
+
+	// $('#login').click(function() {
+	/*	self.socket = new Socket(Multigrain.Events, $("#server-select").val(), 1337);
 		self.socket.connect();
 
 		Multigrain.Events.on('connected', function() {
@@ -41,9 +43,12 @@ Multigrain.App = new Cinder.App(function() {
 
 		Multigrain.Events.on('authenticated', function() {
 			$('#login-overlay-bgr').remove();
-		});
+		});*/
+	// });
+	$('#login-overlay-bgr').remove();
+	Multigrain.Events.on('chanlog', function(data) {
+		console.log(data)
 	});
-
 });
 
 function adjustSizes()
@@ -51,6 +56,7 @@ function adjustSizes()
 	$('#sidebar, #main').height($(window).height() - $('#header').height());
 	$('#main').width($(window).width() - $('#sidebar').width());
 	$('#main').css('left', $('#sidebar').width());
+	$('.dialog').css({'marginLeft': '-' + ($('.dialog').width() / 2) + 'px'})
 };
 
 $(function() {

@@ -11,6 +11,24 @@
 		<script src="vendor/modernizr.js"></script>
 	</head>
 	<body>
+
+	
+		<div class="dialog-bgr">
+			<section class="dialog cf">
+				<header>
+					<span class="left"></span>
+					<span class="close right fa fa-times" id="dialog-close"></span>
+				</header>
+				<section class="content">
+					
+				</section>
+				<footer class="cf">
+					
+				</footer>
+			</section>
+		</div>
+
+
 		<div id="login-overlay-bgr">
 			<div id="login-overlay">
 				<div>
@@ -24,14 +42,15 @@
 				<div class="btn" id="login">login</div>
 			</div>
 		</div>
+
 		<header id="header" class="cf">
 			<div id="channel-select" class="left">
 				<i class="fa fa-desktop" id="serverlist"></i>
 			</div>
 			<div id="channel-message" class="left">
-				<span id="channel">##javascript</span>
+				<span id="channel"></span>
 				<span id="separator">&bull;</span>
-				<span id="message">Can't Talk? Get Registered on FreeNode (HOWTO: http://ur1.ca/90niw) | ECMAScript, Javascript, JS *not* Java | Say: "!help" (or ask and wait) | Run: "!mdn foo" for docs on "foo" | Don't paste code in the channel</span>
+				<span id="message"></span>
 			</div>
 			<ul id="settings" class="right cf">
 				<li id="add"><i class="fa fa-users"></i></li>
@@ -40,42 +59,23 @@
 		</header>
 
 		<section id="sidebar">
-			<ul id="channels">
-				<li class="cf "><span class="channel left">#fedora</span><span class="close right"><i class="fa fa-times"></i></span></li>
-				<li class="cf"><span class="channel left">#fedora</span><span class="close right"><i class="fa fa-times"></i></span></li>
-				<li class="cf"><span class="channel left">#fedora</span><span class="close right"><i class="fa fa-times"></i></span></li>
-				<li class="cf"><span class="channel left">#fedora</span><span class="close right"><i class="fa fa-times"></i></span></li>
-				<li class="cf"><span class="channel left">#fedora</span><span class="close right"><i class="fa fa-times"></i></span></li>
-			</ul>
-			<div id="nick">kohvihoor</div>
+			<div id="servers-channels">
+				<h1 class="server">local</h1>
+				<ul class="channels">
+					<li class="cf "><span class="channel left"><i class="fa fa-comments-o type"></i>#fedora</span><span class="close right"><i class="fa fa-times"></i></span></li>
+					<li class="cf"><span class="channel left">#fedora</span><span class="close right"><i class="fa fa-times"></i></span></li>
+					<li class="cf"><span class="channel left">#fedora</span><span class="close right"><i class="fa fa-times"></i></span></li>
+					<li class="cf"><span class="channel left">#fedora</span><span class="close right"><i class="fa fa-times"></i></span></li>
+					<li class="cf"><span class="channel left">#fedora</span><span class="close right"><i class="fa fa-times"></i></span></li>
+				</ul>
+				<h1 class="server">local</h1>
+			</div>
+			<div id="nick"></div>
 		</section>
 
 		<section id="main">
 			<ul id="chat">
-				<li>
-					<p><span class="author">kohvihoor</span><span class="time">12:04:43</span></p>
-					<p class="message">
-						This is a message
-					</p>
-				</li>
-				<li class="notice">
-					<p><span class="author">kohvihoor</span><span class="time">12:04:43</span></p>
-					<p class="message">
-						This is a message
-					</p>
-				</li>
-				<li class="self">
-					<p><span class="author">kohvihoor</span><span class="time">12:04:43</span></p>
-					<p class="message">
-						This is a message
-					</p>
-				</li>
-				<li>
-					<p><span class="author">kohvihoor</span><span class="time">12:04:43</span></p>
-					<p class="message">
-						This is a message
-					</p>
-				</li>
+				
 			</ul>
 			<div id="input">
 				<i class="fa fa-chevron-right"></i><input type="text">
@@ -85,6 +85,7 @@
 		<script src="vendor/jquery.js"></script>
 		<script src="vendor/jquery.cookie.js"></script>
 		<script src="vendor/minivents.min.js"></script>
+		<script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v1.3.0.js"></script>
 		<script src="app/js/socket.js"></script>
 		<script src="vendor/tmpl.js"></script>
 		<script src="vendor/rye.js"></script>

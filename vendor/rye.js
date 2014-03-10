@@ -19,7 +19,8 @@ window.Cinder = window.Cinder || {};
 			if(list.hasOwnProperty(template))
 			{
 				$.ajax({ url: path + list[template].file, async: false }).done(function(tpl) {
-					self.templates[template] = tmpl(tpl);
+					// self.templates[template] = tmpl(tpl);
+					self.templates[template] = Handlebars.compile(tpl);
 				});
 			}
 		}

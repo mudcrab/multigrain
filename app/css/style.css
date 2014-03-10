@@ -81,6 +81,30 @@ header#header {
     font-size: 10pt;
     text-align: center;
     border-right: 1px solid #3d3d3d; }
+    header#header div#channel-select ul#server-menu {
+      list-style: none;
+      line-height: 1;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      top: 46px;
+      left: 0;
+      color: #212121;
+      background: rgba(255, 255, 255, 0.9);
+      border-right: 1px solid #dddddd;
+      text-align: left;
+      font-size: 11pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      min-width: 200px; }
+      header#header div#channel-select ul#server-menu li {
+        border-bottom: 1px solid #dddddd;
+        padding: 8px 10px; }
+        header#header div#channel-select ul#server-menu li.active {
+          padding-left: 15px;
+          font-weight: 700; }
+        header#header div#channel-select ul#server-menu li.sep {
+          height: 25px; }
   header#header div#channel-message {
     height: 45px;
     line-height: 45px;
@@ -121,21 +145,30 @@ section#sidebar {
   position: absolute;
   left: 0;
   top: 45px;
-  width: 20%;
+  width: 15%;
   min-width: 300px;
   background: #f3f3f3; }
-  section#sidebar ul#channels {
+  section#sidebar h1.server {
     margin: 0;
     padding: 0;
-    list-style: none;
+    font-size: 10pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 5px 10px; }
+  section#sidebar div#servers-channels {
     height: calc(100% - 45px); }
-    section#sidebar ul#channels li {
-      height: 45px;
-      line-height: 45px;
+  section#sidebar ul.channels {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+    section#sidebar ul.channels li {
+      height: 40px;
+      line-height: 40px;
       font-size: 11pt;
       text-transform: uppercase;
-      padding: 0 10px;
-      border-bottom: 1px solid #dddddd; }
+      padding: 0 15px; }
+      section#sidebar ul.channels li i.type {
+        margin-right: 10px; }
   section#sidebar div#nick {
     height: 45px;
     line-height: 45px;
@@ -308,60 +341,105 @@ input {
   footer#footer div#username {
     width: 100px !important;
     overflow: hidden; } }
-section.dialog {
+@media only screen and (max-width: 599px) {
+  section.dialog {
+    top: 0px !important; } }
+div.dialog-bgr {
+  background: rgba(33, 33, 33, 0.9);
   position: fixed;
-  top: 46px;
+  top: 0;
+  bottom: 0;
   left: 0;
-  width: 100%;
-  max-height: 50%;
-  overflow-y: hidden;
-  background: #fff;
-  border-bottom: #dddddd;
-  z-index: 1000;
-  text-align: center;
-  box-shadow: 0 1px 2px rgba(33, 33, 33, 0.4);
+  right: 0;
+  z-index: 9999;
   display: none; }
-  section.dialog section.container {
-    margin: auto;
-    text-align: left;
-    max-width: 800px;
-    border-left: 1px solid #dddddd;
-    border-right: 1px solid #dddddd; }
-    section.dialog section.container header.title {
-      height: 35px;
-      line-height: 35px;
-      text-transform: uppercase;
-      font-weight: 600;
-      padding: 0 10px; }
-    section.dialog section.container section.content {
-      padding: 0 10px 10px;
-      overflow-y: auto; }
-      section.dialog section.container section.content h1.title {
-        margin: 0;
-        padding: 0;
+
+section.dialog {
+  max-width: 600px;
+  width: 100%;
+  position: fixed;
+  left: 50%;
+  top: 30%; }
+  section.dialog header {
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+    font-weight: 400;
+    font-size: 12pt;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid #dddddd; }
+    section.dialog header span {
+      margin: 0 15px; }
+    section.dialog header span.close {
+      border-radius: 45px;
+      box-shadow: 0 1px 6px rgba(33, 33, 33, 0.3) inset;
+      margin-top: 10px;
+      padding: 3px 5px;
+      color: rgba(33, 33, 33, 0.2); }
+      section.dialog header span.close:hover {
+        color: #212121; }
+  section.dialog footer {
+    height: 40px;
+    line-height: 40px;
+    background: rgba(255, 255, 255, 0.9);
+    border-top: 1px solid #dddddd; }
+    section.dialog footer .btn {
+      margin: 0 4px;
+      margin-top: 4px; }
+  section.dialog .btn {
+    padding: 5px 10px;
+    border: 1px solid #dddddd;
+    box-shadow: 0 2px 5px rgba(33, 33, 33, 0.15);
+    background: #fff;
+    font-size: 10pt;
+    font-weight: 600;
+    text-transform: uppercase; }
+    section.dialog .btn.green {
+      border-color: #97db4a; }
+    section.dialog .btn:focus {
+      outline: none; }
+  section.dialog section.body {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px; }
+    section.dialog section.body.bt {
+      border-top: 1px solid #dddddd; }
+    section.dialog section.body span.label {
+      font-size: 11pt;
+      font-weight: 700;
+      text-transform: uppercase; }
+    section.dialog section.body input {
+      border: none;
+      border-bottom: 1px solid rgba(33, 33, 33, 0.3);
+      background: transparent;
+      margin: 0 10px;
+      font-size: 10pt;
+      font-weight: 600; }
+      section.dialog section.body input:focus {
+        box-shadow: none; }
+    section.dialog section.body div.separator {
+      border-bottom: 1px solid #dddddd;
+      margin: 10px 0; }
+      section.dialog section.body div.separator.empty {
+        border: none; }
+    section.dialog section.body input#irc-address {
+      width: 270px; }
+    section.dialog section.body input#irc-port {
+      width: 80px; }
+    section.dialog section.body ul#irc-channels {
+      margin: 0;
+      padding: 0;
+      list-style: none; }
+      section.dialog section.body ul#irc-channels li.irc-channel {
+        padding: 5px 10px;
+        border: 1px solid #dddddd;
+        background: #fff;
         font-size: 10pt;
         font-weight: 600;
         text-transform: uppercase;
-        margin: 5px 0; }
-      section.dialog section.container section.content input {
-        margin: 0;
-        padding: 0;
-        width: 100%; }
-        section.dialog section.container section.content input#server-address {
-          width: calc(100% - 10% - 5px);
-          border-right: none; }
-        section.dialog section.container section.content input#server-port {
-          width: calc(10% + 2px); }
-    section.dialog section.container footer.actions {
-      height: 45px;
-      line-height: 45px;
-      padding: 0 10px;
-      border-top: 1px solid #dddddd; }
-      section.dialog section.container footer.actions a, section.dialog section.container footer.actions a:visited, section.dialog section.container footer.actions a:active {
-        text-decoration: none;
-        text-transform: uppercase;
-        color: #000;
-        font-size: 11pt;
-        border: 1px solid #dddddd;
-        padding: 3px 10px;
-        margin-left: 5px; }
+        margin: 5px 10px; }
+    section.dialog section.body div#add-channel-wrap {
+      text-align: center;
+      margin-top: 10px; }
+      section.dialog section.body div#add-channel-wrap.btn {
+        margin: auto; }
