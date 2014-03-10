@@ -20,6 +20,11 @@ $smaller: 0.8em;
 	margin: 0;
 	padding: 0;
 }
+
+@mixin list-reset {
+	@include reset;
+	list-style: none;
+}
 // colors
 
 $border: #ddd;
@@ -52,372 +57,6 @@ body {
 .left { float: left; }
 .right { float: right; }
 
-
-
-div#login-overlay-bgr {
-	background: rgba($dark, 0.9);
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	z-index: 9999;
-
-	div#login-overlay {
-		text-align: center;
-		position: absolute;
-		top: calc(50% - 125px);
-		left: calc(50% - 200px);
-		width: 400px;
-		height: 250px;
-	
-		input, select {
-			width: 360px;
-			height: 40px;
-			margin: 0;
-			border: none;
-			padding-left: 10px;
-		}
-
-		input {
-			margin-top: 10px;
-			width: 350px;
-		}
-
-		div.btn {
-			margin: auto;
-			margin-top: 10px;
-			@include lineheight(40);
-			border: 1px solid $border;
-			text-transform: uppercase;
-			color: #fff;
-			width: 360px;
-			@include translate-prop(all, 100);
-			font-weight: 600;
-			cursor: pointer;
-
-			&:hover {
-				background: #f3f3f3;
-				color: $dark;
-			}
-		}
-
-	}
-
-}
-
-
-header#header {
-	width: 100%;
-	height: 45px;
-	background: #303030;
-	color: #fff;
-	// box-shadow: 0px 0px 3px rgba($dark, 0.4);
-	border-bottom: 1px solid $border-dark;
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 1000;
-
-	div#channel-select {
-		line-height: 45px;
-		width: 45px;
-		font-size: 10pt;
-		text-align: center;
-		border-right: 1px solid $border-dark;
-
-		ul#server-menu {
-			list-style: none;
-			line-height: 1;
-			@include reset;
-			position: absolute;
-			top: 46px;
-			left: 0;
-			color: $dark;
-			background: rgba(#fff, 0.9);
-			border-right: 1px solid $border;
-			text-align: left;
-			font-size: 11pt;
-			font-weight: 600;
-			text-transform: uppercase;
-			min-width: 200px;
-
-			li {
-				border-bottom: 1px solid $border;
-				padding: 8px 10px;
-
-				&.active {
-					padding-left: 15px;
-					font-weight: 700;
-				}
-
-				&.sep {
-					height: 25px;
-				}
-			}
-		}
-	}
-
-	div#channel-message {
-		@include lineheight(45);
-		padding-left: 15px;
-		font-size: 11pt;
-		overflow: hidden;
-		width: calc(100% - 160px);
-
-		span {
-			&#channel {
-				font-weight: 600;
-				text-transform: uppercase;
-			}
-			&#separator {
-				padding: 0 5px;
-				font-size: 12pt;
-			}
-			&#message {
-				font-size: 10pt;
-			}
-		}
-	}
-
-	ul {
-
-		&#settings { 
-			@include reset;
-			list-style: none;
-			font-size: 10pt;
-			text-align: center;
-
-			li {
-				float: left;
-				@include lineheight(44);
-				@include translate-prop(all, 100);
-				border-top: 1px solid transparent;
-				width: 45px;
-				border-left: 1px solid $border-dark;
-
-				&:hover {
-					border-top-color: rgba($blue, 1);
-				}
-			}
-		}
-	}
-}
-
-section#sidebar {
-	position: absolute;
-	left: 0;
-	top: 45px;
-	width: 15%;
-	min-width: 300px;
-	background: #f3f3f3;
-
-	h1.server {
-		@include reset;
-		font-size: 10pt;
-		font-weight: 700;
-		text-transform: uppercase;
-		padding: 5px 10px;
-		// border-bottom: 1px solid $border;
-	}
-	div#servers-channels {
-		height: calc(100% - 45px);
-	}
-	ul.channels {
-		@include reset;
-		list-style: none;
-
-		li {
-			@include lineheight(40);
-			font-size: 11pt;
-			text-transform: uppercase;
-			padding: 0 15px;
-
-			i.type {
-				margin-right: 10px;
-			}
-		}
-	}
-
-	div#nick {
-		@include lineheight(45);
-		border-top: 1px solid $border;
-		text-align: right;
-		padding-right: 10px;
-		background: #fff;
-	}
-}
-
-section#main {
-	position: absolute;
-	left: 20%;
-	top: 45px;
-	width: 80%;
-
-	ul#chat {
-		@include reset;
-		list-style: none;
-		height: calc(100% - 45px);
-		background: #fff;
-		border-left: 1px solid $border;
-		// box-shadow: 0 0 3px rgba($dark, 0.4);
-
-		li {
-			padding: 5px 10px;
-			p {
-				@include reset;
-
-				span {
-					font-size: 10pt;
-					&.author {
-						
-					}
-
-					&.time {
-						font-style: italic;
-						color: rgba($dark, 0.3);
-						margin-left: 10px;
-					}
-				}
-			}
-
-			&.self {
-				color: #6F6F6F;
-				span.author {
-					font-style: italic;
-				}
-			}
-
-			&.notice {
-				color: #dc0000;
-				span.author {
-					font-weight: 600;
-				}
-			}
-		}
-	}
-
-	div#input {
-		@include lineheight(45);
-		border-top: 1px solid $border;
-		background: #fff;
-		i {
-			width: 10px;
-			font-size: 10pt;
-		}
-		input {
-			height: 25px;
-			width: calc(100% - 20px);
-			margin-top: 0px;
-			border: none;
-			border-bottom: 1px solid rgba($dark, 0.3);
-		}
-	}
-}
-
-section#chat-display {
-
-	position: absolute;
-	top: 45px;
-	left: 0;
-	height: 100%;
-	width: 100%;
-	overflow-y: auto;
-
-	/* section#nicks {
-		width: 235px;
-		text-align: right;
-	}
-
-	section#chat {
-
-	} */
-
-	ul#display {
-
-		@include reset;
-		list-style: none;
-		font-size: 11pt;
-		text-align: center;
-
-		li.chatline {
-			max-width: 90%;
-			margin: 10px auto;
-
-			&.self {
-				color: #6F6F6F;
-				div.nick {
-					font-style: italic;
-				}
-			}
-
-			&.notice {
-				color: #dc0000;
-				div.nick {
-					font-weight: 600;
-				}
-			}
-
-			div.nick {
-				width: calc(10% - 10px);
-				text-align: right;
-				padding-right: 10px;
-			}
-
-			div.message {
-				width: calc(90% - 60px);
-				text-align: left;
-			}
-			div.timestamp {
-				// float: right;
-				width: 50px;
-				text-align: right;
-			}
-
-		}
-
-	}
-
-}
-
-footer#footer {
-	width: 100%;
-	height: 50px;
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	background: #fff;
-	box-shadow: 0 0 3px rgba($dark, 0.4);
-
-	div {
-
-		&#username {
-			width: 235px;
-			@include lineheight(50);
-			text-align: right;
-			padding-right: 10px;
-		}
-
-		&#input-wrap {
-
-			input {
-				@include reset;
-				@include translate-prop(all, 100);
-				height: 30px;
-				margin: 10px 0;
-				border: 1px solid $border;
-
-				&:focus {
-					outline: none;
-					box-shadow: 0 0 7px rgba($blue, 0.6);
-					border-color: rgba($blue, 0.4);
-				}
-			}
-		}
-
-	}
-}
-
 input {
 	@include reset;
 	@include translate-prop(all, 100);
@@ -432,53 +71,199 @@ input {
 	}
 }
 
-@media only screen and (max-width: 767px) {
-	section#sidebar {
-		@include translate-prop(all, 100);
-		left: -300px;
-		min-width: 0;
-		width: 0;
-
-		ul#channels, div#nick {
-			display: none;
-		}
-	}
-    header {
-    	ul#channel-tabs {
-    		display: none;
-    	}
-    }
-    section#chat-display {
-    	ul#display {
-    		div.timestamp {
-    			display: none;
-    		}
-    		div.nick {
-    			float: none;
-    			width: 200px !important;
-    			text-align: left !important;
-    		}
-    		div.message {
-    			width: calc(90% - 20px) !important;
-    			margin-left: 10px;
-    		}
-    	}
-    }
-
-    footer#footer {
-    	div {
-    		&#username {
-    			width: 100px !important;
-    			overflow: hidden;
-    		}
-    	}
-    }
+section#sidebar-toggle {
+	position: fixed;
+	top: 5px;
+	left: 5px;
+	@include lineheight(30);
+	width: 30px;
+	font-size: 14px;
+	text-align: center;
+	background: #fff;
+	z-index: 9000;
+	display: none;
 }
 
-@media only screen and (max-width: 599px) {
-	section.dialog {
-		top: 0px !important;
+section#sidebar {
+
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 270px;
+	background: #303030;
+	color: #fff;
+	z-index: 9001;
+	@include translate-prop(left, 100);
+
+	header#channel {
+		@include lineheight(40);
+		padding: 0 15px;
+
+		i {
+			padding-top: 12px;
+		}
+
+		span {
+			text-transform: uppercase;
+			font-weight: 600;
+		}
 	}
+
+	section#channels {
+		padding: 0 15px;
+		height: calc(100% - 80px);
+		overflow-y: auto;
+
+		header.title {
+			font-weight: 700;
+			font-size: 10pt;
+			text-transform: uppercase;
+		}
+
+		ul#channel-list {
+			@include list-reset;
+			margin-top: 20px;
+
+			li {
+				margin-bottom: 20px;
+
+				h1, h2 {
+					@include reset;
+					text-transform: uppercase;
+				}
+
+				h1 {
+					font-size: 11pt;
+					font-weight: 600;
+				}
+
+				h2 {
+					font-size: 10pt;
+					font-weight: 300;
+					color: #949494;
+				}
+
+				i {
+					padding-top: 10px;
+					color: #949494;
+				}
+			}
+
+		}
+
+	}
+
+	footer {
+		@include lineheight(40);
+		padding: 0 15px;
+		text-transform: uppercase;
+		font-weight: 600;
+	}
+
+}
+
+section#container {
+	position: fixed;
+	top: 0;
+	left: 270px;
+	width: calc(100% - 270px);
+	height: 100%;
+	@include translate-prop(left, 100);
+
+	header {
+		@include lineheight(40);
+		padding: 0 15px;
+
+		section#channel-message {
+			font-size: 10pt;
+			overflow: hidden;
+			height: 40px;
+			width: calc(100% - 110px);
+		}
+
+		section#user {
+			/* position: absolute;
+			top: 0;
+			right: 15px; */
+			font-size: 10pt;
+			font-weight: 700;
+			text-transform: uppercase;
+			background: #f3f3f3;
+		}
+
+	}
+
+	section#chat {
+		height: calc(100% - 80px);
+		overflow-y: auto;
+
+		ul#chatlines {
+			@include list-reset;
+			font-size: 11pt;
+			text-align: center;
+
+			li {
+				max-width: 90%;
+				margin: 10px auto;
+
+				&.self {
+					color: #6F6F6F;
+					div.nick {
+						font-style: italic;
+					}
+				}
+
+				&.notice {
+					color: #dc0000;
+					div.nick {
+						font-weight: 600;
+					}
+				}
+
+				div.nick {
+					width: calc(10% - 10px);
+					text-align: right;
+					padding-right: 10px;
+				}
+
+				div.message {
+					width: calc(90% - 60px);
+					text-align: left;
+				}
+				div.timestamp {
+					// float: right;
+					width: 50px;
+					text-align: right;
+				}
+			}
+
+		}
+
+	}
+
+	section#chat-input {
+
+		i {
+			width: 10px;
+			padding: 0 10px;
+		}
+
+		input {
+			@include reset;
+			border: none;
+			border-bottom: 1px solid #b9b9b9;
+			background: transparent;
+			width: calc(100% - 60px);
+
+			&:focus {
+				box-shadow: none;
+				border-color: #303030;
+			}
+		}
+
+	}
+
 }
 
 div.dialog-bgr {
@@ -624,4 +409,79 @@ section.dialog {
 		}
 
 	}
+}
+div#login-overlay-bgr {
+	background: rgba($dark, 0.9);
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 9999;
+
+	div#login-overlay {
+		text-align: center;
+		position: absolute;
+		top: calc(50% - 125px);
+		left: calc(50% - 200px);
+		width: 400px;
+		height: 250px;
+	
+		input, select {
+			width: 360px;
+			height: 40px;
+			margin: 0;
+			border: none;
+			padding-left: 10px;
+		}
+
+		input {
+			margin-top: 10px;
+			width: 350px;
+		}
+
+		div.btn {
+			margin: auto;
+			margin-top: 10px;
+			@include lineheight(40);
+			border: 1px solid $border;
+			text-transform: uppercase;
+			color: #fff;
+			width: 360px;
+			@include translate-prop(all, 100);
+			font-weight: 600;
+			cursor: pointer;
+
+			&:hover {
+				background: #f3f3f3;
+				color: $dark;
+			}
+		}
+
+	}
+
+}
+
+@media only screen and (max-width: 767px) {
+	
+	section#sidebar {
+		left: -270px;
+	}
+
+	section#container {
+		left: 0;
+		width: 100%;
+
+		header {
+			section#channel-message {
+				margin-left: 25px;
+				width: calc(100% - 135px);
+			}
+		}
+	}
+
+	section#sidebar-toggle {
+		display: inline;
+	}
+
 }

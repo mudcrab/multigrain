@@ -53,14 +53,32 @@ Multigrain.App = new Cinder.App(function() {
 
 function adjustSizes()
 {
-	$('#sidebar, #main').height($(window).height() - $('#header').height());
+	/*$('#sidebar, #main').height($(window).height() - $('#header').height());
 	$('#main').width($(window).width() - $('#sidebar').width());
 	$('#main').css('left', $('#sidebar').width());
-	$('.dialog').css({'marginLeft': '-' + ($('.dialog').width() / 2) + 'px'})
+	$('.dialog').css({'marginLeft': '-' + ($('.dialog').width() / 2) + 'px'})*/
+
+	
 };
 
 $(function() {
-	adjustSizes();
+	// adjustSizes();
+
+	$('body').on('click', '#sidebar-toggle', function() {
+		$('#sidebar').css('left', '0px');
+		$('#container').css('left', '270px');
+		$('#channel-message').css('marginLeft', 0);
+	});
+
+	$('#container').click(function() {
+		if($(this).position().left == 270)
+		{
+			$('#sidebar').css('left', '-270px');
+			$(this).css('left', '0px');
+			$('#channel-message').css('marginLeft', '25px');
+		}
+	})
+
 });
 
 $(window).resize(function() {

@@ -11,6 +11,59 @@
 		<script src="vendor/modernizr.js"></script>
 	</head>
 	<body>
+		<section id="sidebar-toggle">
+			<i class="fa fa-bars"></i>
+		</section>
+		<section id="sidebar">
+			<header class="cf" id="channel">
+				<i class="fa fa-plus-circle left"></i>
+				<span class="right" id="channel-name">#fedora</span>
+			</header>
+			<section id="channels">
+				<ul id="channel-list">
+					<li class="cf">
+						<div class="left">
+							<h1 class="channel">#debian</h1>
+							<h2 class="server">freenode</h2>
+						</div>
+						<div class="right">
+							<i class="fa fa-times"></i>
+						</div>
+					</li>
+					<li class="cf">
+						<div class="left">
+							<h1 class="channel">##javascript</h1>
+							<h2 class="server">freenode</h2>
+						</div>
+						<div class="right">
+							<i class="fa fa-times"></i>
+						</div>
+					</li>
+				</ul>
+			</section>
+			<footer>
+				settings
+			</footer>
+		</section>
+
+		<section id="container">
+			<header class="cf">
+				<section class="left" id="channel-message">
+					Topic for #jquery is: jQuery 2.1.0 & jQuery 1.11.0 http://jquery.com | jQuery UI 1.10.4 http://jqueryui.com | jQuery Mobile 1.4.1 http://jquerymobile.com | Docs: http://api.jquery.com http://learn.jquery.com | Paste code @ http://jsfiddle.net or http://jsbin.com | Dev Channels #jquery-dev #jqueryui-dev #jquerymobile-dev | http://try.jquery.com for learning basics | Channel logged @ http://irc.jquery.com
+				</section>
+				<section class="right" id="user">
+					@kohvihoor
+				</section>
+			</header>
+			<section id="chat">
+				<ul id="chatlines">
+					
+				</ul>
+			</section>
+			<section id="chat-input">
+				<i class="fa fa-chevron-right"></i><input type="text">
+			</section>
+		</section>
 
 	
 		<div class="dialog-bgr">
@@ -43,44 +96,7 @@
 			</div>
 		</div>
 
-		<header id="header" class="cf">
-			<div id="channel-select" class="left">
-				<i class="fa fa-desktop" id="serverlist"></i>
-			</div>
-			<div id="channel-message" class="left">
-				<span id="channel"></span>
-				<span id="separator">&bull;</span>
-				<span id="message"></span>
-			</div>
-			<ul id="settings" class="right cf">
-				<li id="add"><i class="fa fa-users"></i></li>
-				<li id="user-settings"><i class="fa fa-cog"></i></li>
-			</ul>
-		</header>
 
-		<section id="sidebar">
-			<div id="servers-channels">
-				<h1 class="server">local</h1>
-				<ul class="channels">
-					<li class="cf "><span class="channel left"><i class="fa fa-comments-o type"></i>#fedora</span><span class="close right"><i class="fa fa-times"></i></span></li>
-					<li class="cf"><span class="channel left">#fedora</span><span class="close right"><i class="fa fa-times"></i></span></li>
-					<li class="cf"><span class="channel left">#fedora</span><span class="close right"><i class="fa fa-times"></i></span></li>
-					<li class="cf"><span class="channel left">#fedora</span><span class="close right"><i class="fa fa-times"></i></span></li>
-					<li class="cf"><span class="channel left">#fedora</span><span class="close right"><i class="fa fa-times"></i></span></li>
-				</ul>
-				<h1 class="server">local</h1>
-			</div>
-			<div id="nick"></div>
-		</section>
-
-		<section id="main">
-			<ul id="chat">
-				
-			</ul>
-			<div id="input">
-				<i class="fa fa-chevron-right"></i><input type="text">
-			</div>
-		</section>
 		
 		<script src="vendor/jquery.js"></script>
 		<script src="vendor/jquery.cookie.js"></script>
