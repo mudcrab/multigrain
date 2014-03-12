@@ -2,13 +2,7 @@ window.Multigrain = window.Multigrain || { Controllers: {} };
 
 Multigrain.Events = new Events();
 
-Multigrain.router = new Cinder.Router({
-	'': function() {
-		var self = this;
-		this.Main = new Multigrain.Controllers.Main();
-		this.Main.render();
-	},
-});
+
 
 Multigrain.App = new Cinder.App(function() {
 	
@@ -27,9 +21,14 @@ Multigrain.App = new Cinder.App(function() {
 		},
 		'chatline': {
 			file: 'chatline.html.hbs'
+		},
+		'channel': {
+			file: 'channel.html.hbs'
 		}
 	};
 	this.loadTemplates('/app/templates/', list);
+
+
 
 
 
@@ -51,14 +50,17 @@ Multigrain.App = new Cinder.App(function() {
 	});
 });
 
+Multigrain.router = new Cinder.Router({
+	'': function() {
+		var self = this;
+		this.Main = new Multigrain.Controllers.Main();
+		this.Main.render();
+	},
+});
+
 function adjustSizes()
 {
-	/*$('#sidebar, #main').height($(window).height() - $('#header').height());
-	$('#main').width($(window).width() - $('#sidebar').width());
-	$('#main').css('left', $('#sidebar').width());
-	$('.dialog').css({'marginLeft': '-' + ($('.dialog').width() / 2) + 'px'})*/
 
-	
 };
 
 $(function() {
@@ -71,7 +73,7 @@ $(function() {
 	});
 
 	$('#container').click(function() {
-		if($(this).position().left == 270)
+		if($(this).position().left == 270 && $(window).width() < 768)
 		{
 			$('#sidebar').css('left', '-270px');
 			$(this).css('left', '0px');
@@ -82,5 +84,10 @@ $(function() {
 });
 
 $(window).resize(function() {
-	adjustSizes();
+	if($(window).width() >= 768 && $('#container').position().left < 270)
+	{
+		$('#sidebar').css('left', '0px');
+		$('#container').css('left', '270px');
+		$('#channel-message').css('marginLeft', 0);
+	}
 });
