@@ -1,0 +1,10 @@
+<section class="body">
+    <select name="servers" id="join-server">
+    {{#each servers}}
+        <option value="{{ @key }}">{{ this }}</option>
+    {{/each}}
+    </select>
+    <input type="text" id="join-channel"/>
+
+    <button class="green btn" id="join-chan">join channel</button>
+</section>

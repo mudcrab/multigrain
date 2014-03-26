@@ -77,6 +77,16 @@ Socket.prototype.pSend = function(data)
 	// this.ws.send(JSON.stringify(m));
 };
 
+Socket.prototype.sendMessage = function(data)
+{
+    this.ws.send(JSON.stringify(data));
+}
+
+Socket.prototype.join = function(_server, _channel)
+{
+    this.ws.send(JSON.stringify({ type: 'join', data: { server: _server, channel: _channel } }));
+};
+
 Socket.prototype.createSendObject = function(str)
 {
 	var m = { type: null, data: {} };

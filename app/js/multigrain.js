@@ -24,7 +24,10 @@ Multigrain.App = new Cinder.App(function() {
 		},
 		'channel': {
 			file: 'channel.html.hbs'
-		}
+		},
+        'join': {
+            file: 'join.html.hbs'
+        }
 	};
 	this.loadTemplates('/app/templates/', list);
 
@@ -33,7 +36,7 @@ Multigrain.App = new Cinder.App(function() {
 
 
 	// $('#login').click(function() {
-	/*	self.socket = new Socket(Multigrain.Events, $("#server-select").val(), 1337);
+	    self.socket = new Socket(Multigrain.Events, $("#server-select").val(), 1337);
 		self.socket.connect();
 
 		Multigrain.Events.on('connected', function() {
@@ -42,11 +45,11 @@ Multigrain.App = new Cinder.App(function() {
 
 		Multigrain.Events.on('authenticated', function() {
 			$('#login-overlay-bgr').remove();
-		});*/
+		});
 	// });
-	$('#login-overlay-bgr').remove();
+//	$('#login-overlay-bgr').remove();
 	Multigrain.Events.on('chanlog', function(data) {
-		console.log(data)
+//		console.log(data)
 	});
 });
 

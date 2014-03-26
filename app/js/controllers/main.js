@@ -2,68 +2,54 @@ window.Multigrain = window.Multigrain || { Controllers: {} };
 
 Multigrain.Controllers.Main = function(settings)
 {
+    var self = this;
 	this.events = {
 		'click .channel-list-item': function(e) {
 			this.switchChannel($(e.currentTarget).data().server, $(e.currentTarget).data().channel);
-		}.bind(this)
+		}.bind(this),
+        'click #channel-join': this.joinChannel,
+        'click #join-chan': this.commitJoin
 		// 'click #channel-select': this.handleConnections,
 		// 'click #user-settings': this.addLine,
 	};
 
 	this.channels = {};
-	this.activeChannel = null;
+    this.activeServer = 'local';
 	this.activeNick = null;
 
 	this.serverNicks = {
-		local: 'khvhr',
+		local: 'jk',
 		freenode: 'kohvihoor'
 	};
 
-	var serverChannelList = 
-	{
-		local: [
-			{
-				name: '#test',
-				message: 'Blah1',
-				history: [
-					{
-						from: 'asdf',
-						message: 'alskdjasdkljsa'
-					},
-					{
-						from: 'khvhr',
-						message: 'lololol khvhr'
-					},
-					{
-						from: 'asdf',
-						message: 'lolololasdadasdas'
-					},
-					{
-						from: 'aaasd123',
-						message: 'asdasfasfasdasdas'
-					},
-					{
-						from: 'ksasd',
-						message: 'khvhr, kldjsakl'
-					}
-				]
-			}
-		],
-		freenode: [
-			{
-				name: '##javascript',
-				message: 'Blah2',
-				history: []
-			},
-			{
-				name: '#debian',
-				message: 'Blah3',
-				history: []
-			}
-		]
-	};
-	
-	this.populateChannels(serverChannelList);
+	Multigrain.Events.on('chanlog', function(data) {
+		console.log(data)
+		self.populateChannels(data);
+	});
+
+    Multigrain.Events.on('chanMsg', function(data) {
+        self.channels[data.server][data.to].history.push({ from: data.from, message: data.message });
+        self.addMessage({ from: data.from, message: data.message });
+    });
+
+    $(document).keypress(function(e) {
+        if(e.which == 13)
+        {
+            var txt = $('#chat-text');
+
+            var chat = {
+                type: 'say',
+                data: {
+                    serverName: self.activeServer,
+                    channel: self.activeChannel,
+                    message: txt.val()
+                }
+            };
+
+            Multigrain.App.socket.sendMessage(chat);
+            txt.val('');
+        }
+    });
 
 	Cinder.Controller.call(this, settings, this.events);
 };
@@ -119,6 +105,7 @@ Multigrain.Controllers.Main.prototype.switchChannel = function(server, channel)
 	var self = this;
 	if(channel !== this.activeChannel)
 	{
+        this.activeServer = server;
 		var item = this.channels[server][channel];
 		$('#channel-name').html(channel);
 		$('#channel-message').html(item.message);
@@ -128,28 +115,80 @@ Multigrain.Controllers.Main.prototype.switchChannel = function(server, channel)
 
 		$('#chatlines').empty();
 		item.history.forEach(function(history) {
-			var type = null;
-
-			if(history.from == self.activeNick)
-				type = 'self';
-
-			var matcher = new RegExp(self.activeNick, 'g');
-			if(history.message.match(matcher) != null && history.from != self.activeNick)
-				type = 'notice';
-
-			var chatline = {
-				type: type,
-				author: history.from,
-				message: history.message,
-				time: new Date()
-			};
-			$('#chatlines').append(Multigrain.App.templates.chatline(chatline));
+			self.addMessage(history);
 		});
 	}
+	$("#chat").animate({ scrollTop: $('#chat')[0].scrollHeight}, "fast");
 	return channel;
+};
+
+Multigrain.Controllers.Main.prototype.addMessage = function(history)
+{
+    var self = this;
+    var type = null;
+
+    if(history.from == self.activeNick)
+        type = 'self';
+
+    var matcher = new RegExp(self.activeNick, 'g');
+    if(history.message.match(matcher) != null && history.from != self.activeNick)
+        type = 'notice';
+
+    var chatline = {
+        type: type,
+        author: history.from,
+        message: history.message,
+        time: new Date()
+    };
+    $('#chatlines').append(Multigrain.App.templates.chatline(chatline));
+    $("#chat").animate({ scrollTop: $('#chat')[0].scrollHeight}, "fast");
 };
 
 Multigrain.Controllers.Main.prototype.setNick = function()
 {
 	$('#user').text('@' + this.activeNick);
+};
+
+// todo refactor!
+
+Multigrain.Controllers.Main.prototype.joinChannel = function(e)
+{
+    var self = this;
+    var data = {
+        servers: {
+            local: 'localhost',
+            freenode: 'Freenode',
+            cyber: 'Cybernetica'
+        }
+    }
+    this.dialog(Multigrain.App.templates.join(data));
+};
+
+Multigrain.Controllers.Main.prototype.commitJoin = function()
+{
+	var server = $('#join-server').val();
+	var channel = $('#join-channel').val();
+	Multigrain.App.socket.join(server, channel);
+	this.channels[server] = this.channels[server] || {};
+	this.channels[server][channel] = this.channels[server][channel] || { history: [], message: '' };
+	$('#channel-list').append(Multigrain.App.templates.channel({
+		channel: channel,
+		server: server
+	}));
+	this.closeDialog();
+}
+
+// todo refactor this to a normal separate class
+
+Multigrain.Controllers.Main.prototype.dialog = function(content)
+{
+    $('#dialog section.content').html(content);
+    $('#dialog').fadeIn('fast');
+    $('.dialog').css({'marginLeft': '-' + ($('.dialog').width() / 2) + 'px'});
+};
+
+Multigrain.Controllers.Main.prototype.closeDialog = function()
+{
+    $('#dialog section.content').empty();
+    $('#dialog').hide();
 };
