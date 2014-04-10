@@ -8,7 +8,8 @@ Multigrain.Controllers.Main = function(settings)
 			this.switchChannel($(e.currentTarget).data().server, $(e.currentTarget).data().channel);
 		}.bind(this),
         'click #channel-join': this.joinChannel,
-        'click #join-chan': this.commitJoin
+        'click #join-chan': this.commitJoin,
+        'click #show-right-pane': this.showMainSidebar
 		// 'click #channel-select': this.handleConnections,
 		// 'click #user-settings': this.addLine,
 	};
@@ -17,13 +18,26 @@ Multigrain.Controllers.Main = function(settings)
     this.activeServer = 'local';
 	this.activeNick = null;
 
+	this.dialog = new Cinder.Interface.Dialog('main-dialog', {
+		width: 500,
+		height: 'auto',
+		title: '',
+		show: false
+	});
+	this.dialog.addCloseClass('fa fa-times cls');
+
+	this.rightPane = new Cinder.Interface.Pane('rightpane', {
+		width: 350,
+		show: true
+	});
+
 	this.serverNicks = {
 		local: 'jk',
 		freenode: 'kohvihoor'
 	};
 
 	Multigrain.Events.on('chanlog', function(data) {
-		console.log(data)
+		// console.log(data)
 		self.populateChannels(data);
 	});
 
@@ -161,7 +175,9 @@ Multigrain.Controllers.Main.prototype.joinChannel = function(e)
             cyber: 'Cybernetica'
         }
     }
-    this.dialog(Multigrain.App.templates.join(data));
+
+    this.dialog.setContent(Multigrain.App.templates.join(data));
+    this.dialog.toggle(true);
 };
 
 Multigrain.Controllers.Main.prototype.commitJoin = function()
@@ -175,20 +191,10 @@ Multigrain.Controllers.Main.prototype.commitJoin = function()
 		channel: channel,
 		server: server
 	}));
-	this.closeDialog();
+	this.dialog.close();
 }
 
-// todo refactor this to a normal separate class
-
-Multigrain.Controllers.Main.prototype.dialog = function(content)
+Multigrain.Controllers.Main.prototype.showMainSidebar = function()
 {
-    $('#dialog section.content').html(content);
-    $('#dialog').fadeIn('fast');
-    $('.dialog').css({'marginLeft': '-' + ($('.dialog').width() / 2) + 'px'});
-};
-
-Multigrain.Controllers.Main.prototype.closeDialog = function()
-{
-    $('#dialog section.content').empty();
-    $('#dialog').hide();
+	this.rightPane.toggle(true);
 };

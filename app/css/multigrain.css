@@ -130,7 +130,7 @@ section#container {
       font-size: 10pt;
       overflow: hidden;
       height: 40px;
-      width: calc(100% - 120px); }
+      width: calc(100% - 150px); }
     section#container header section#user {
       /* position: absolute;
       top: 0;
@@ -140,6 +140,9 @@ section#container {
       font-weight: 700;
       text-transform: uppercase;
       background: #f3f3f3;
+      text-align: right; }
+    section#container header section#show-right-pane {
+      width: 30px;
       text-align: right; }
   section#container section#chat {
     height: calc(100% - 80px);
@@ -326,6 +329,15 @@ div#login-overlay-bgr {
       div#login-overlay-bgr div#login-overlay div.btn:hover {
         background: #f3f3f3;
         color: #212121; }
+
+#main-dialog button.cls {
+  border: none;
+  background: transparent; }
+  #main-dialog button.cls:hover {
+    color: rgba(255, 0, 0, 0.7); }
+
+div#rightpane {
+  background: #fff; }
 
 @media only screen and (max-width: 767px) {
   section#sidebar {

@@ -28,7 +28,7 @@ window.Cinder = window.Cinder || {};
 
 	var Router = function(routes)
 	{
-		var self = this;
+		var self = this;	
 		this.routes = this.routes || [];
 
 		for(var route in routes)

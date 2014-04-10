@@ -6,8 +6,9 @@
 		<title>MULTIGRAIN</title>
 		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,600,700,800,300' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="app/css/normalize.css">
+		<link rel="stylesheet" href="app/css/normalize.css" />
 		<link rel="stylesheet" href="app/css/multigrain.css" />
+		<link rel="stylesheet" href="cinder/css/cinder.css" />
 		<script src="vendor/modernizr.js"></script>
 	</head>
 	<body>
@@ -33,8 +34,8 @@
 			<header class="cf">
 				<section class="left" id="channel-message">
 				</section>
-				<section class="right" id="user">
-				</section>
+				<section class="right" id="show-right-pane"><i class="fa fa-cog"></i></section>
+				<section class="right" id="user"></section>
 			</header>
 			<section id="chat">
 				<ul id="chatlines">
@@ -77,6 +78,8 @@
 			</div>
 		</div>
 
+		<div class="cinder-pane cinder-pane-right overlay" id="rightpane"></div>
+
 
 		
 		<script src="vendor/jquery.js"></script>
@@ -86,9 +89,12 @@
 		<script src="app/js/socket.js"></script>
 		<script src="vendor/tmpl.js"></script>
 		<script src="vendor/rye.js"></script>
+		<script src="cinder/js/cinder.dialog.js"></script>
+		<script src="cinder/js/cinder.pane.js"></script>
 		<script src="app/js/controllers/main.js"></script>
 		<script src="app/js/controllers/tabs.js"></script>
 		<script src="app/js/multigrain.js"></script>
 		<script src="app/js/multigrain.ui.js"></script>
+		<script src="../cinder/js/cinder.js"></script>
 	</body>
 </html>
