@@ -33,201 +33,141 @@ $light: #f3f3f3;
 $dark: #212121;
 $red: rgba(red, 0.7);
 $blue: #6BCEED;
+$gray: #ddd;
 
 html, body {
 	height: 100%;
+	text-align: center;
+	@include reset;
 }
 
 body {
-	background: #f3f3f3;
 	@include normal;
-	color: $dark;
-	overflow-y: hidden;
+	overflow-x: hidden;
 }
 
-.cf:before,
-.cf:after {
-	content: " ";
-	display: table;
-}
-.cf:after {
-	clear: both;
-}
-
-.left { float: left; }
-.right { float: right; }
-
-input {
-	@include reset;
-	@include translate-prop(all, 100);
-	height: 30px;
-	margin: 10px 0;
-	border: 1px solid $border;
-
-	&:focus {
-		outline: none;
-		box-shadow: 0 0 7px rgba($blue, 0.6);
-		border-color: rgba($blue, 0.4);
-	}
-}
-
-section#sidebar-toggle {
-	position: fixed;
-	top: 5px;
-	left: 5px;
-	@include lineheight(30);
-	width: 30px;
-	font-size: 14px;
-	text-align: center;
-	background: #fff;
-	z-index: 9000;
-	display: none;
-}
-
-section#sidebar {
-
-	position: fixed;
-	left: 0;
+div#multigrain {
+	position: absolute;
 	top: 0;
-	height: 100%;
-	width: 270px;
-	background: #303030;
-	color: #fff;
-	z-index: 9001;
-	@include translate-prop(left, 100);
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	@include translate-prop(all, 100);
 
-	header#channel {
-		@include lineheight(40);
-		padding: 0 15px;
+	header#multigrain-header {
+		width: 100%;
+		height: 50px;
+		line-height: 50px;
+		background: $dark;
+		text-align: left;
+		color: #fff;
 
-		i {
-			padding-top: 12px;
-		}
+		section#header-container {
+			margin: auto;
+			max-width: 1240px;
+			padding: 0 20px;
 
-		span {
-			text-transform: uppercase;
-			font-weight: 600;
-			width: 210px;
-			text-align: right;
-		}
-	}
+			section#channel-info {
 
-	section#channels {
-		padding: 0 15px;
-		height: calc(100% - 80px);
-		overflow-y: auto;
-
-		header.title {
-			font-weight: 700;
-			font-size: 10pt;
-			text-transform: uppercase;
-		}
-
-		ul#channel-list {
-			@include list-reset;
-			margin-top: 20px;
-
-			li {
-				margin-bottom: 20px;
-
-				h1, h2 {
-					@include reset;
+				section#channel-name {
 					text-transform: uppercase;
+					font-weight: 700;
+					font-size: 16pt;
+
+					i {
+						font-size: 10pt;
+					}
 				}
 
-				h1 {
-					font-size: 11pt;
-					font-weight: 600;
-				}
+				ul#chanlist-dropdown {
+					@include list-reset;
 
-				h2 {
-					font-size: 10pt;
-					font-weight: 300;
-					color: #949494;
-				}
+					h1, h2 {
+						@include reset;
+					}
 
-				i {
-					padding-top: 10px;
-					color: #949494;
+					h1.chan-title {
+						font-size: 12pt;
+					}
+
+					h2.chan-server {
+						font-size: 10pt;
+					}
 				}
 			}
 
-		}
+			section#main-menu-holder {
+				ul#main-menu {
+					@include list-reset;
+					li {
+						padding: 0 15px;
+						font-size: 14px;
 
-	}
-
-	footer {
-		@include lineheight(40);
-		padding: 0 15px;
-		text-transform: uppercase;
-		font-weight: 600;
-	}
-
-}
-
-section#container {
-	position: fixed;
-	top: 0;
-	left: 270px;
-	width: calc(100% - 270px);
-	height: 100%;
-	@include translate-prop(left, 100);
-
-	header {
-		@include lineheight(40);
-		padding: 0 15px;
-
-		section#channel-message {
-			font-size: 10pt;
-			overflow: hidden;
-			height: 40px;
-			width: calc(100% - 150px);
-		}
-
-		section#user {
-			/* position: absolute;
-			top: 0;
-			right: 15px; */
-			width: 120px;
-			font-size: 10pt;
-			font-weight: 700;
-			text-transform: uppercase;
-			background: #f3f3f3;
-			text-align: right;
-		}
-		section#show-right-pane {
-			width: 30px;
-			text-align: right;
-		}
-
-	}
-
-	section#chat {
-		height: calc(100% - 80px);
-		overflow-y: auto;
-
-		ul#chatlines {
-			@include list-reset;
-			margin: 0 auto;
-			width: calc(100% - 20px);
-
-			li {
-				padding: 5px 10px;
-				p {
-					@include reset;
-
-					span {
-						font-size: 10pt;
-						&.author {
-
-						}
-
-						&.time {
-							font-style: italic;
-							color: rgba($dark, 0.3);
-							margin-left: 10px;
+						&:last-of-type {
+							padding-right: 0;
 						}
 					}
+				}
+			}
+		}
+	}
+
+	section#multigrain-channel {
+		width: 100%;
+		height: 39px;
+		line-height: 39px;
+		background: #f3f3f3;
+		border-bottom: 1px solid $gray;
+		overflow-x: auto;
+
+		section#multigrain-channel-holder {
+			max-width: 1240px;
+			margin: auto;
+			padding: 0 20px;
+			font-size: 10pt;
+
+			i {
+				font-size: 14px;
+			}
+
+			div#multigrain-channel-message {
+				width: calc(100% - 14px);
+			}
+		}
+	}
+
+	section#multigrain-chat-holder {
+		width: 100%;
+		height: calc(100% - 135px);
+		overflow-y: auto;
+		text-align: left;
+		
+		ul#multigrain-chat {
+			@include list-reset;
+			max-width: 1240px;
+			margin: auto;
+			padding: 0 20px;
+			font-size: 11pt;
+
+			li {
+				margin: 10px 0;
+				// div.userinfo {
+					font-size: 10pt;
+					span.author {
+						font-weight: 600;
+						margin: 0 10px;
+					}
+
+					span.time {
+						font-weight: 300;
+						color: #ccc;
+						margin-left: 10px;
+						font-style: italic;
+					}
+				// }
+
+				div.msg {
+					color: $dark;
 				}
 
 				&.self {
@@ -238,22 +178,24 @@ section#container {
 				}
 
 				&.notice {
-					color: #dc0000;
 					span.author {
+						font-weight: 600;
+					}
+
+					span.msg {
+						color: #dc0000;
 						font-weight: 600;
 					}
 				}
 			}
 		}
-
 	}
 
-	section#chat-input {
-
-		i {
-			width: 10px;
-			padding: 0 10px;
-		}
+	section#multigrain-chat-input {
+		width: 100%;
+		height: 44px;
+		line-height: 44px;
+		border-top: 1px dashed $gray;
 
 		input {
 			@include reset;
@@ -265,157 +207,48 @@ section#container {
 			&:focus {
 				box-shadow: none;
 				border-color: #303030;
+
 			}
 		}
-
 	}
-
 }
 
-div.dialog-bgr {
-	background: rgba($dark, 0.9);
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	z-index: 9999;
-	display: none;
-}
-section.dialog {
-	max-width: 600px;
-	width: 100%;
-	position: fixed;
-	left: 50%;
-	// margin-left: -300px;
-	top: 30%;
+#channels {
+	background: $dark;
 
-	header {
-		@include lineheight(40);
-		width: 100%;
-		font-weight: 400;
-		font-size: 12pt;
-		text-transform: uppercase;
-		background: rgba(#fff, 0.95);
-		border-bottom: 1px solid $border;
+	ul#channel-list {
+		@include list-reset;
+		margin: 20px;
 
-		span {
-			margin: 0 15px;
-		}
-		span.close {
-			border-radius: 45px;
-			box-shadow: 0 1px 6px rgba($dark, 0.3) inset;
-			margin-top: 10px;
-			padding: 3px 5px;
-			color: rgba($dark, 0.2);
+		li {
+			margin-bottom: 20px;
 
-			&:hover {
-				color: $dark;
-			}
-		}
-	}
-
-	footer {
-		@include lineheight(40);
-		background: rgba(#fff, 0.9);
-		border-top: 1px solid $border;
-
-		.btn {
-			margin: 0 4px;
-			margin-top: 4px;
-		}
-	}
-
-	.btn {
-		padding: 5px 10px;
-		border: 1px solid $border;
-		box-shadow: 0 2px 5px rgba($dark, .15);
-		background: #fff;
-		font-size: 10pt;
-		font-weight: 600;
-		text-transform: uppercase;
-
-		&.green {
-			border-color: #97db4a;
-		}
-
-		&:focus {
-			outline: none;
-		}
-	}
-
-	section.body {
-		background: rgba(#fff, 0.95);
-		padding: 20px;
-
-		&.bt {
-			border-top: 1px solid $border;
-		}
-
-		span.label {
-			font-size: 11pt;
-			font-weight: 700;
-			text-transform: uppercase;
-		}
-
-		input {
-			border: none;
-			border-bottom: 1px solid rgba($dark, .3);
-			background: transparent;
-			margin: 0 10px;
-			font-size: 10pt;
-			font-weight: 600;
-
-			&:focus {
-				box-shadow: none;
-			}
-		}
-
-		div.separator {
-			border-bottom: 1px solid $border;
-			margin: 10px 0;
-			&.empty {
-				border: none;
-			}
-		}
-
-		// content specific
-
-		input {
-			&#irc-address {
-				width: 270px;
-			}
-			&#irc-port {
-				width: 80px;
-			}
-		}
-
-		ul#irc-channels {
-			@include reset;
-			list-style: none;
-
-			li.irc-channel {
-				padding: 5px 10px;
-				border: 1px solid $border;
-				background: #fff;
-				font-size: 10pt;
-				font-weight: 600;
+			h1, h2 {
+				@include reset;
 				text-transform: uppercase;
-				margin: 5px 10px;
 			}
-		}
 
-		div#add-channel-wrap {
-			text-align: center;
-			margin-top: 10px;
+			h1 {
+				font-size: 11pt;
+				font-weight: 600;
+				color: #fff;
+			}
 
-			&.btn {
-				margin: auto;
+			h2 {
+				font-size: 10pt;
+				font-weight: 300;
+				color: #949494;
+			}
+
+			i {
+				padding-top: 10px;
+				color: #949494;
 			}
 		}
 
 	}
 }
+
 div#login-overlay-bgr {
 	background: rgba($dark, 0.9);
 	position: fixed;
@@ -464,45 +297,6 @@ div#login-overlay-bgr {
 			}
 		}
 
-	}
-
-}
-
-#main-dialog {
-	button.cls {
-		border: none;
-		background: transparent;
-
-		&:hover {
-			color: $red;
-		}
-	}
-}
-
-div#rightpane {
-	background: #fff;
-}
-
-@media only screen and (max-width: 767px) {
-	
-	section#sidebar {
-		left: -270px;
-	}
-
-	section#container {
-		left: 0;
-		width: 100%;
-
-		header {
-			section#channel-message {
-				margin-left: 25px;
-				width: calc(100% - 135px);
-			}
-		}
-	}
-
-	section#sidebar-toggle {
-		display: inline;
 	}
 
 }

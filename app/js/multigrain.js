@@ -35,7 +35,7 @@ Multigrain.App = new Cinder.App(function() {
 
 
 
-	// $('#login').click(function() {
+	$('#login').click(function() {
 	    self.socket = new Socket(Multigrain.Events, $("#server-select").val(), 1337);
 		self.socket.connect();
 
@@ -46,8 +46,8 @@ Multigrain.App = new Cinder.App(function() {
 		Multigrain.Events.on('authenticated', function() {
 			$('#login-overlay-bgr').remove();
 		});
-	// });
-//	$('#login-overlay-bgr').remove();
+	});
+	// $('#login-overlay-bgr').remove();
 	Multigrain.Events.on('chanlog', function(data) {
 //		console.log(data)
 	});
@@ -87,10 +87,10 @@ $(function() {
 });
 
 $(window).resize(function() {
-	if($(window).width() >= 768 && $('#container').position().left < 270)
+	/*if($(window).width() >= 768 && $('#container').position().left < 270)
 	{
 		$('#sidebar').css('left', '0px');
 		$('#container').css('left', '270px');
 		$('#channel-message').css('marginLeft', 0);
-	}
+	}*/
 });

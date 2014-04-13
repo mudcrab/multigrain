@@ -9,7 +9,8 @@ Multigrain.Controllers.Main = function(settings)
 		}.bind(this),
         'click #channel-join': this.joinChannel,
         'click #join-chan': this.commitJoin,
-        'click #show-right-pane': this.showMainSidebar
+        'click #show-right-pane': this.showMainSidebar,
+        'click #channel-name': this.toggleChannels
 		// 'click #channel-select': this.handleConnections,
 		// 'click #user-settings': this.addLine,
 	};
@@ -31,19 +32,25 @@ Multigrain.Controllers.Main = function(settings)
 		show: true
 	});
 
+	this.channelsView = new Cinder.Interface.Pane('channels', {
+		width: 300,
+		show: false
+	});
+
 	this.serverNicks = {
 		local: 'jk',
 		freenode: 'kohvihoor'
 	};
 
 	Multigrain.Events.on('chanlog', function(data) {
-		// console.log(data)
 		self.populateChannels(data);
 	});
 
     Multigrain.Events.on('chanMsg', function(data) {
         self.channels[data.server][data.to].history.push({ from: data.from, message: data.message });
-        self.addMessage({ from: data.from, message: data.message });
+        
+        if(data.to === self.activeChannel)
+        	self.addMessage({ from: data.from, message: data.message });
     });
 
     $(document).keypress(function(e) {
@@ -127,12 +134,13 @@ Multigrain.Controllers.Main.prototype.switchChannel = function(server, channel)
 		this.activeNick = this.serverNicks[server];
 		this.setNick();
 
-		$('#chatlines').empty();
+		$('#multigrain-chat').empty();
 		item.history.forEach(function(history) {
 			self.addMessage(history);
 		});
 	}
-	$("#chat").animate({ scrollTop: $('#chat')[0].scrollHeight}, "fast");
+	// $('#multigrain-chat-holder').scrollTop( $('#multigrain-chat').height() );
+	// $("#chat").animate({ scrollTop: $('#chat')[0].scrollHeight}, "fast");
 	return channel;
 };
 
@@ -152,10 +160,10 @@ Multigrain.Controllers.Main.prototype.addMessage = function(history)
         type: type,
         author: history.from,
         message: history.message,
-        time: new Date()
+        time: new Date().toTimeString().split(' ')[0]
     };
-    $('#chatlines').append(Multigrain.App.templates.chatline(chatline));
-    $("#chat").animate({ scrollTop: $('#chat')[0].scrollHeight}, "fast");
+    $('#multigrain-chat').append(Multigrain.App.templates.chatline(chatline));
+	$('#multigrain-chat-holder').scrollTop( $('#multigrain-chat').height() );
 };
 
 Multigrain.Controllers.Main.prototype.setNick = function()
@@ -192,6 +200,30 @@ Multigrain.Controllers.Main.prototype.commitJoin = function()
 		server: server
 	}));
 	this.dialog.close();
+}
+
+Multigrain.Controllers.Main.prototype.toggleChannels = function()
+{
+	var mg = $('#multigrain');
+	this.channelsView.toggle();
+
+	if(this.channelsView.getPaneInfo().visible)
+	{
+		var w = mg.width() - this.channelsView.getPaneInfo().width;
+		if($(window).width() < 700)
+			w = '100%';
+		mg.css({ 
+			width: w,
+			left: this.channelsView.getPaneInfo().width
+		});
+	}
+	else
+	{
+		mg.css({
+			width: '100%',
+			left: 0
+		})
+	}
 }
 
 Multigrain.Controllers.Main.prototype.showMainSidebar = function()
