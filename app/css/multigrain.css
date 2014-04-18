@@ -19,6 +19,8 @@ div#multigrain {
   -ms-transition: all 100ms linear;
   -o-transition: all 100ms linear;
   transition: all 100ms linear; }
+  div#multigrain.with-sidebar {
+    width: calc(100% - 300px); }
   div#multigrain header#multigrain-header {
     width: 100%;
     height: 50px;
@@ -30,6 +32,11 @@ div#multigrain {
       margin: auto;
       max-width: 1240px;
       padding: 0 20px; }
+      div#multigrain header#multigrain-header section#header-container i#show-channels {
+        font-size: 14px;
+        height: 50px;
+        line-height: 50px;
+        margin-right: 10px; }
       div#multigrain header#multigrain-header section#header-container section#channel-info section#channel-name {
         text-transform: uppercase;
         font-weight: 700;
@@ -47,6 +54,8 @@ div#multigrain {
           font-size: 12pt; }
         div#multigrain header#multigrain-header section#header-container section#channel-info ul#chanlist-dropdown h2.chan-server {
           font-size: 10pt; }
+      div#multigrain header#multigrain-header section#header-container section#channel-info:hover #channels-dropdown-list {
+        display: block; }
       div#multigrain header#multigrain-header section#header-container section#main-menu-holder ul#main-menu {
         margin: 0;
         padding: 0;
@@ -123,8 +132,68 @@ div#multigrain {
         box-shadow: none;
         border-color: #303030; }
 
+ul#channels-dropdown-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  line-height: 1;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background: #fff;
+  box-shadow: 0 1px 12px rgba(33, 33, 33, 0.3);
+  min-width: 250px;
+  text-align: left;
+  display: none; }
+  ul#channels-dropdown-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #f3f3f3;
+    -webkit-transition: all 100ms linear;
+    -moz-transition: all 100ms linear;
+    -ms-transition: all 100ms linear;
+    -o-transition: all 100ms linear;
+    transition: all 100ms linear; }
+    ul#channels-dropdown-list li:hover {
+      background: #f3f3f3;
+      border-color: #dddddd; }
+    ul#channels-dropdown-list li:last-of-type {
+      border: none; }
+    ul#channels-dropdown-list li h1, ul#channels-dropdown-list li h2 {
+      margin: 0;
+      padding: 0;
+      text-transform: uppercase;
+      padding-left: 10px;
+      color: #212121; }
+    ul#channels-dropdown-list li h1 {
+      font-size: 11pt;
+      font-weight: 600; }
+    ul#channels-dropdown-list li h2 {
+      font-size: 10pt;
+      font-weight: 300;
+      color: #949494; }
+    ul#channels-dropdown-list li i {
+      padding-top: 7px;
+      padding-right: 10px;
+      color: #949494; }
+
 #channels {
   background: #212121; }
+  #channels div#join-channel {
+    height: 50px;
+    line-height: 50px; }
+    #channels div#join-channel span.button {
+      background: transparent;
+      border: 1px solid #fff;
+      color: #fff;
+      -webkit-transition: background 100ms linear;
+      -moz-transition: background 100ms linear;
+      -ms-transition: background 100ms linear;
+      -o-transition: background 100ms linear;
+      transition: background 100ms linear;
+      cursor: pointer; }
+      #channels div#join-channel span.button:hover {
+        background: #fff;
+        color: #212121; }
   #channels ul#channel-list {
     margin: 0;
     padding: 0;
@@ -191,3 +260,24 @@ div#login-overlay-bgr {
       div#login-overlay-bgr div#login-overlay div.btn:hover {
         background: #f3f3f3;
         color: #212121; }
+
+#main-dialog .cls {
+  border: none;
+  background: transparent;
+  -webkit-transition: color 150ms linear;
+  -moz-transition: color 150ms linear;
+  -ms-transition: color 150ms linear;
+  -o-transition: color 150ms linear;
+  transition: color 150ms linear; }
+  #main-dialog .cls:hover {
+    color: rgba(255, 0, 0, 0.7); }
+
+input:focus {
+  outline: 0; }
+
+.button {
+  background: #fff;
+  padding: 5px 10px;
+  font-weight: 700;
+  font-size: 10pt;
+  text-transform: uppercase; }

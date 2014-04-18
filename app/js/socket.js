@@ -51,30 +51,9 @@ Socket.prototype.log = function(evt, data)
 	console.log(event);
 };
 
-Socket.prototype.pSend = function(data)
+Socket.prototype.partChannel = function(server, channel)
 {
-	this.ws.send(this.createSendObject(data));
-	/*var m = { type: 'say', data: null };
-	if(data.charAt(0) == '/')
-	{
-		if(data.match(/\/(.*?) /) != null)
-			m.type = data.match(/\/(.*?) /)[1];
-		else
-			m.type = data.replace('/', '');
-
-		if(data.indexOf(" ") > -1)
-		{
-			
-		}
-	}
-	else
-	{
-		m.data = { channel: '#test', msg: data };
-		// $('#display').append(chatMsg('mg', m.data.msg));
-	}
-	console.log(m)*/
-
-	// this.ws.send(JSON.stringify(m));
+	this.ws.send(JSON.stringify({ type: 'partChannel', data: { server: server, channel: channel } }));
 };
 
 Socket.prototype.sendMessage = function(data)

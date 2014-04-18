@@ -4,20 +4,26 @@ Multigrain.Controllers.Main = function(settings)
 {
     var self = this;
 	this.events = {
-		'click .channel-list-item': function(e) {
-			this.switchChannel($(e.currentTarget).data().server, $(e.currentTarget).data().channel);
+		'click .close-channel': function(e) {
+			e.stopPropagation();
+			var el = $(e.currentTarget).parent();
+			this.closeChannel(el.data().server, el.data().channel, el);
 		}.bind(this),
-        'click #channel-join': this.joinChannel,
+		'click .channel-list-item': function(e) {
+			var el = $(e.currentTarget);
+			this.switchChannel(el.data().server, el.data().channel);
+		}.bind(this),
+        'click #join-channel': this.joinChannel,
         'click #join-chan': this.commitJoin,
         'click #show-right-pane': this.showMainSidebar,
-        'click #channel-name': this.toggleChannels
-		// 'click #channel-select': this.handleConnections,
-		// 'click #user-settings': this.addLine,
+        'click #show-channels': this.toggleChannels,
+        // 'mouseenter #channel-name': this.showChannelsDropdown
 	};
 
 	this.channels = {};
     this.activeServer = 'local';
 	this.activeNick = null;
+	this.stickyChannels = true;
 
 	this.dialog = new Cinder.Interface.Dialog('main-dialog', {
 		width: 500,
@@ -53,6 +59,8 @@ Multigrain.Controllers.Main = function(settings)
         	self.addMessage({ from: data.from, message: data.message });
     });
 
+    this.toggleChannels();
+
     $(document).keypress(function(e) {
         if(e.which == 13)
         {
@@ -70,6 +78,10 @@ Multigrain.Controllers.Main = function(settings)
             Multigrain.App.socket.sendMessage(chat);
             txt.val('');
         }
+    });
+
+    $(window).resize(function() {
+    	self.handleResize();
     });
 
 	Cinder.Controller.call(this, settings, this.events);
@@ -190,8 +202,8 @@ Multigrain.Controllers.Main.prototype.joinChannel = function(e)
 
 Multigrain.Controllers.Main.prototype.commitJoin = function()
 {
-	var server = $('#join-server').val();
-	var channel = $('#join-channel').val();
+	var server = $('#join_server-name').val();
+	var channel = $('#join_channel-name').val();
 	Multigrain.App.socket.join(server, channel);
 	this.channels[server] = this.channels[server] || {};
 	this.channels[server][channel] = this.channels[server][channel] || { history: [], message: '' };
@@ -204,29 +216,80 @@ Multigrain.Controllers.Main.prototype.commitJoin = function()
 
 Multigrain.Controllers.Main.prototype.toggleChannels = function()
 {
+	var self = this;
 	var mg = $('#multigrain');
+	
 	this.channelsView.toggle();
 
 	if(this.channelsView.getPaneInfo().visible)
 	{
-		var w = mg.width() - this.channelsView.getPaneInfo().width;
-		if($(window).width() < 700)
-			w = '100%';
-		mg.css({ 
-			width: w,
+		var cl = 'with-sidebar';
+		if($(window).width() < 700 || !this.stickyChannels)
+			cl = '';
+		mg.css({
 			left: this.channelsView.getPaneInfo().width
-		});
+		}).addClass(cl);
 	}
 	else
 	{
 		mg.css({
-			width: '100%',
 			left: 0
-		})
+		}).removeClass('with-sidebar');
 	}
 }
+
+Multigrain.Controllers.Main.prototype.showChannelsDropdown = function()
+{
+	var chans = $('#channels-dropdown-list');
+	chans.css('left', $('#channel-name').position().left);
+};
+
+Multigrain.Controllers.Main.prototype.hideSidebars = function()
+{
+	if(this.channelsView.getPaneInfo().visible)
+		this.toggleChannels();
+};
+
+Multigrain.Controllers.Main.prototype.closeChannel = function(server, channel, el)
+{
+	var channels = $('body').find('.channel-list-item');
+	Multigrain.App.socket.partChannel(server, channel);
+	delete this.channels[server][channel];
+	
+	if(channel == this.activeChannel && channels.length > 1)
+	{
+		var firstChannel = channels[0];
+		this.switchChannel(firstChannel.data().server, firstChannel.data().channel);
+	}
+	else
+	{
+		$('#channels-list, #multigrain-chat, #channel-name').empty();
+	}
+
+	channels.each(function() {
+		var chan = $(this).data();
+
+		if(chan.server == server && chan.channel == channel)
+			$(this).remove();
+	})
+};
 
 Multigrain.Controllers.Main.prototype.showMainSidebar = function()
 {
 	this.rightPane.toggle(true);
+};
+
+Multigrain.Controllers.Main.prototype.handleResize = function()
+{
+	/*var mg = $('#multigrain');
+	if(this.channelsView.getPaneInfo().visible && $(window).width() > 700)
+	{
+		this.stickyChannels = true;
+		mg.css('width', 'calc(100% - ' + this.channelsView.getPaneInfo().width + 'px)');
+	}
+	else if($(window).width() <= 700)
+	{
+		this.stickyChannels = false;
+		mg.width('100%');
+	}*/
 };
