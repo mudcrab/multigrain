@@ -27,6 +27,9 @@ Multigrain.App = new Cinder.App(function() {
 		},
         'join': {
             file: 'join.html.hbs'
+        },
+        'channels': {
+        	file: 'channels.html.hbs'
         }
 	};
 	this.loadTemplates('/app/templates/', list);

@@ -65,6 +65,7 @@ div#multigrain {
 		background: $dark;
 		text-align: left;
 		color: #fff;
+		@include translate-prop(background, 100);
 
 		section#header-container {
 			margin: auto;
@@ -282,7 +283,7 @@ ul#channels-dropdown-list {
 #channels {
 	background: $dark;
 
-	div#join-channel {
+	/* div#join-channel {
 		@include lineheight(50);
 
 		span.button {
@@ -297,38 +298,64 @@ ul#channels-dropdown-list {
 				color: $dark;
 			}
 		}
+	} */
+
+	div#switch-server {
+		@include lineheight(50);
+		width: 300px;
+		background: #000;
+		color: #fff;
+		text-align: left;
+
+		i {
+			margin: 0 10px;
+		}
+
+		span#server-name {
+			text-transform: uppercase;
+			font-weight: 600;
+		}
+
+		span#nick {
+			font-weight: 400;
+			margin: 0 10px;
+			font-size: 10pt;
+		}
 	}
 
 	ul#channel-list {
 		@include list-reset;
-		margin: 20px;
+		height: calc(100% - 110px);
+		overflow-y: auto;
+		width: 100%;
 
-		li {
-			margin-bottom: 20px;
-
-			h1, h2 {
-				@include reset;
-				text-transform: uppercase;
-			}
-
-			h1 {
-				font-size: 11pt;
-				font-weight: 600;
+		li.channel-list-item {
+			@include lineheight(20);
+			padding: 5px 10px;
+			span.channel {
 				color: #fff;
+				font-size: 12pt;
+				font-weight: 400;
 			}
 
-			h2 {
-				font-size: 10pt;
-				font-weight: 300;
-				color: #949494;
-			}
-
-			i {
-				padding-top: 10px;
-				color: #949494;
+			i.close-channel {
+				padding-top: 5px;
 			}
 		}
+	}
 
+	div#channel-join-holder {
+		@include lineheight(60);
+
+		button.button {
+			height: 40px;
+			width: 280px;
+			border: none;
+			border-radius: 3px;
+			background: #5fb25f;
+			color: #fff;
+			padding: 0;
+		}
 	}
 }
 
