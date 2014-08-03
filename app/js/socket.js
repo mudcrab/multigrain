@@ -32,7 +32,7 @@ Socket.prototype.handleMessage = function(d)
 {
 	// $('#display').append('<li class="raw">' + d + '</li>');
 	var msg = JSON.parse(d);
-	// console.log(msg)
+	console.info(msg);
 	this.events.emit(msg.type, msg.data);
 };
 
