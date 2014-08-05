@@ -135,7 +135,7 @@ body {
 .normal, h3, h4, h5, h6 {
   font-weight: 400; }
 
-.semibold, h2, section.cinder-modal-overlay header.cinder-modal-titlebar h1 {
+.semibold, h2, section.cinder-modal-overlay header.cinder-modal-titlebar h1, section.cinder-pane header.cinder-pane-header div.cinder-pane-title {
   font-weight: 500; }
 
 .bold, h1 {
@@ -288,3 +288,18 @@ section.cinder-modal-overlay {
     bottom: 0;
     left: 0;
     right: 0; }
+
+section.cinder-pane {
+  width: 320px;
+  position: fixed;
+  top: 0;
+  bottom: 0; }
+  section.cinder-pane.left-pane {
+    left: 0; }
+  section.cinder-pane.right-pane {
+    right: 0; }
+  section.cinder-pane header.cinder-pane-header div.cinder-pane-close {
+    padding: 0 15px;
+    font-size: 0.875em; }
+  section.cinder-pane header.cinder-pane-header div.cinder-pane-title {
+    font-size: 1.125em; }

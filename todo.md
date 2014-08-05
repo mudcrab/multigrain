@@ -10,7 +10,7 @@ Frontend
 
  Views
  ==
- - Add server
+ - Add server (done)
  - Server settings
  - Join channel
  - History

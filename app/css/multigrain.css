@@ -135,7 +135,7 @@ body {
 .normal, h3, h4, h5, h6 {
   font-weight: 400; }
 
-.semibold, h2, section.cinder-modal-overlay header.cinder-modal-titlebar h1, nav > ul li#channel-info span#channel-name, ul#chat li.chatline div.chat-nick, footer#footer div.row div#user-nick, #add-server-dialog div.cinder-modal-buttonbar, #add-server-dialog button, #add-server-dialog section#add-server-content h1, #add-server-dialog section#add-server-content label {
+.semibold, h2, section.cinder-modal-overlay header.cinder-modal-titlebar h1, section.cinder-pane header.cinder-pane-header div.cinder-pane-title, nav > ul li#channel-info span#channel-name, ul#chat li.chatline div.chat-nick, footer#footer div.row div#user-nick, #add-server-dialog div.cinder-modal-buttonbar, #add-server-dialog button, #add-server-dialog section#add-server-content h1, #add-server-dialog section#add-server-content label, section#add-server-pane section.cinder-pane-content h1.label, section#add-server-pane section.cinder-pane-content input {
   font-weight: 500; }
 
 .bold, h1, ul#chat li.chatline.mention, #add-server-dialog section#add-server-content button:active {
@@ -288,6 +288,21 @@ section.cinder-modal-overlay {
     bottom: 0;
     left: 0;
     right: 0; }
+
+section.cinder-pane {
+  width: 320px;
+  position: fixed;
+  top: 0;
+  bottom: 0; }
+  section.cinder-pane.left-pane {
+    left: 0; }
+  section.cinder-pane.right-pane {
+    right: 0; }
+  section.cinder-pane header.cinder-pane-header div.cinder-pane-close {
+    padding: 0 15px;
+    font-size: 0.875em; }
+  section.cinder-pane header.cinder-pane-header div.cinder-pane-title {
+    font-size: 1.125em; }
 
 body {
   background: #f3f3f3; }
@@ -442,6 +457,46 @@ footer#footer {
       border-radius: 3px;
       margin: auto;
       border: 1px solid #ddd; }
+
+section#add-server-pane {
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(17, 17, 17, 0.3); }
+  section#add-server-pane header.cinder-pane-header {
+    height: 49px;
+    line-height: 49px;
+    border-bottom: 1px solid #ddd; }
+  section#add-server-pane section.cinder-pane-content {
+    overflow-y: auto;
+    height: calc(100% - 99px); }
+    section#add-server-pane section.cinder-pane-content h1.label {
+      font-size: 0.875em;
+      text-transform: uppercase;
+      line-height: 1;
+      margin: 20px 0 0 20px; }
+    section#add-server-pane section.cinder-pane-content input {
+      margin: 10px 0 10px 20px;
+      background: transparent;
+      border: none;
+      width: 280px;
+      box-shadow: 0 1px 1px rgba(17, 17, 17, 0.3);
+      height: 30px;
+      line-height: 30px;
+      padding-left: 10px;
+      font-family: 'Fira Sans', sans-serif;
+      outline: none; }
+      section#add-server-pane section.cinder-pane-content input:focus {
+        box-shadow: 0 1px 1px rgba(17, 17, 17, 0.6); }
+    section#add-server-pane section.cinder-pane-content #channels-list {
+      list-style: none;
+      margin: 10px 20px 0 20px;
+      font-size: 0.875em; }
+      section#add-server-pane section.cinder-pane-content #channels-list li {
+        padding: 5px 0; }
+  section#add-server-pane footer.cinder-pane-footer {
+    height: 49px;
+    line-height: 49px;
+    width: 100%;
+    border-top: 1px solid #ddd; }
 
 @media (max-width: 500px) {
   #user-nick {

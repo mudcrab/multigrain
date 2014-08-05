@@ -261,6 +261,65 @@ footer#footer {
 
 }
 
+section#add-server-pane {
+	background: #fff;
+	box-shadow: 0 1px 3px rgba(#111, 0.3);
+
+	header.cinder-pane-header {
+		@include lineheight(49);
+		border-bottom: 1px solid $multigrain-border-dark;		
+	}
+
+	section.cinder-pane-content {
+		// position: fixed;
+		// top: 50px;
+		// left: 0;
+		overflow-y: auto;
+		height: calc(100% - 99px);
+
+		h1.label {
+			font-size: em(14);
+			@extend .semibold;
+			text-transform: uppercase;
+			line-height: 1;
+			margin: 20px 0 0 20px;
+		}
+
+		input {
+			margin: 10px 0 10px 20px;
+			background: transparent;
+			border: none;
+			width: 280px;
+			box-shadow: 0 1px 1px rgba(#111, 0.3);
+			@include lineheight(30);
+			padding-left: 10px;
+			font-family: $cinder-sans-font;
+			@extend .semibold;
+			outline: none;
+
+			&:focus {
+				box-shadow: 0 1px 1px rgba(#111, 0.6);
+			}
+		}
+
+		#channels-list {
+			list-style: none;
+			margin: 10px 20px 0 20px;
+			font-size: em(14);
+
+			li {
+				padding: 5px 0;
+			}
+		}
+	}
+
+	footer.cinder-pane-footer {
+		@include lineheight(49);
+		width: 100%;
+		border-top: 1px solid $multigrain-border-dark;
+	}
+}
+
 @media (max-width: $cinder-grid-width / 2) {
 	#user-nick {
 		display: none;
