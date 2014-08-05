@@ -76,11 +76,11 @@ input, select {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-.cf:before, .row:before, .cf:after, .row:after {
+.cf:before, .row:before, #add-server-dialog .cinder-modal-buttonbar:before, .cf:after, .row:after, #add-server-dialog .cinder-modal-buttonbar:after {
   content: " ";
   display: table; }
 
-.cf:after, .row:after {
+.cf:after, .row:after, #add-server-dialog .cinder-modal-buttonbar:after {
   clear: both; }
 
 .left {
@@ -135,10 +135,10 @@ body {
 .normal, h3, h4, h5, h6 {
   font-weight: 400; }
 
-.semibold, h2, nav > ul li#channel-info span#channel-name, ul#chat li.chatline div.chat-nick, footer#footer div.row div#user-nick, #add-server-dialog button, #add-server-dialog section#add-server-content h1, #add-server-dialog section#add-server-content label {
+.semibold, h2, section.cinder-modal-overlay header.cinder-modal-titlebar h1, nav > ul li#channel-info span#channel-name, ul#chat li.chatline div.chat-nick, footer#footer div.row div#user-nick, #add-server-dialog div.cinder-modal-buttonbar, #add-server-dialog button, #add-server-dialog section#add-server-content h1, #add-server-dialog section#add-server-content label {
   font-weight: 500; }
 
-.bold, h1, ul#chat li.chatline.mention, #add-server-dialog section#add-server-content button:active, #add-server-dialog .cinder-modal-buttonbar button.finish {
+.bold, h1, ul#chat li.chatline.mention, #add-server-dialog section#add-server-content button:active {
   font-weight: 700; }
 
 .mono {
@@ -162,96 +162,96 @@ h5 {
 h6 {
   font-size: 0.75em; }
 
-.row {
+.row, #add-server-dialog .cinder-modal-buttonbar {
   max-width: 1000px; }
-  .row .col-1 {
+  .row .col-1, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     width: 8.33333%; }
-  .row .col-1-fluid {
+  .row .col-1-fluid, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     width: 8.33333%; }
-  .row .col-2 {
+  .row .col-2, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     width: 16.66667%; }
-  .row .col-2-fluid {
+  .row .col-2-fluid, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     width: 16.66667%; }
-  .row .col-3 {
+  .row .col-3, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     width: 25%; }
-  .row .col-3-fluid {
+  .row .col-3-fluid, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     width: 25%; }
-  .row .col-4 {
+  .row .col-4, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     width: 33.33333%; }
-  .row .col-4-fluid {
+  .row .col-4-fluid, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     width: 33.33333%; }
-  .row .col-5 {
+  .row .col-5, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     width: 41.66667%; }
-  .row .col-5-fluid {
+  .row .col-5-fluid, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     width: 41.66667%; }
-  .row .col-6 {
+  .row .col-6, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     width: 50%; }
-  .row .col-6-fluid {
+  .row .col-6-fluid, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     width: 50%; }
-  .row .col-7 {
+  .row .col-7, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     width: 58.33333%; }
-  .row .col-7-fluid {
+  .row .col-7-fluid, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     width: 58.33333%; }
-  .row .col-8 {
+  .row .col-8, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     width: 66.66667%; }
-  .row .col-8-fluid {
+  .row .col-8-fluid, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     width: 66.66667%; }
-  .row .col-9 {
+  .row .col-9, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     width: 75%; }
-  .row .col-9-fluid {
+  .row .col-9-fluid, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     width: 75%; }
-  .row .col-10 {
+  .row .col-10, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     width: 83.33333%; }
-  .row .col-10-fluid {
+  .row .col-10-fluid, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     width: 83.33333%; }
-  .row .col-11 {
+  .row .col-11, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     width: 91.66667%; }
-  .row .col-11-fluid {
+  .row .col-11-fluid, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     width: 91.66667%; }
-  .row .col-12 {
+  .row .col-12, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     width: 100%; }
-  .row .col-12-fluid {
+  .row .col-12-fluid, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     width: 100%; }
-  .row [class*='col-'] {
+  .row [class*='col-'], .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     float: left; }
-  .row [class*='col-']:last-of-type {
+  .row [class*='col-']:last-of-type, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     float: right; }
 
 @media (max-width: 500px) {
-  .row .col-1 {
+  .row .col-1, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     float: none;
     width: 100%; }
-  .row .col-2 {
+  .row .col-2, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     float: none;
     width: 100%; }
-  .row .col-3 {
+  .row .col-3, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     float: none;
     width: 100%; }
-  .row .col-4 {
+  .row .col-4, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     float: none;
     width: 100%; }
-  .row .col-5 {
+  .row .col-5, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     float: none;
     width: 100%; }
-  .row .col-6 {
+  .row .col-6, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     float: none;
     width: 100%; }
-  .row .col-7 {
+  .row .col-7, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     float: none;
     width: 100%; }
-  .row .col-8 {
+  .row .col-8, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     float: none;
     width: 100%; }
-  .row .col-9 {
+  .row .col-9, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     float: none;
     width: 100%; }
-  .row .col-10 {
+  .row .col-10, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     float: none;
     width: 100%; }
-  .row .col-11 {
+  .row .col-11, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     float: none;
     width: 100%; }
-  .row .col-12 {
+  .row .col-12, .row #add-server-dialog .cinder-modal-buttonbar, #add-server-dialog .row .cinder-modal-buttonbar {
     float: none;
     width: 100%; } }
 
@@ -270,6 +270,9 @@ section.cinder-modal-overlay {
     top: 0;
     left: 0;
     right: 0; }
+    section.cinder-modal-overlay header.cinder-modal-titlebar h1 {
+      font-size: 1.5em;
+      padding: 0 20px; }
     section.cinder-modal-overlay header.cinder-modal-titlebar div.cinder-modal-close {
       float: right;
       padding: 0 20px; }
@@ -363,78 +366,82 @@ footer#footer {
   transform: translate(-50%, 0);
   background: #fff;
   border-top: 1px solid #ddd; }
-  footer#footer div.row {
+  footer#footer div.row, footer#footer #add-server-dialog div.cinder-modal-buttonbar, #add-server-dialog footer#footer div.cinder-modal-buttonbar {
     height: 49px;
     line-height: 49px;
     margin: auto; }
-    footer#footer div.row div#user-nick {
+    footer#footer div.row div#user-nick, footer#footer div.row #add-server-dialog div.cinder-modal-buttonbar, #add-server-dialog footer#footer div.row div.cinder-modal-buttonbar {
       text-align: right;
       font-size: 0.875em;
       padding-right: 10px; }
-    footer#footer div.row div#input-text input {
+    footer#footer div.row div#input-text input, footer#footer div.row div#input-text #add-server-dialog div.cinder-modal-buttonbar, #add-server-dialog footer#footer div.row div#input-text div.cinder-modal-buttonbar {
       width: 100%;
       border: none;
       border-bottom: 1px solid #ddd;
       font-family: 'Fira Sans', sans-serif;
       font-size: 0.875em;
       outline: none; }
-    footer#footer div.row div#multigrain-settings {
+    footer#footer div.row div#multigrain-settings, footer#footer div.row #add-server-dialog div.cinder-modal-buttonbar, #add-server-dialog footer#footer div.row div.cinder-modal-buttonbar {
       text-align: right;
       padding-right: 15px; }
 
-#add-server-dialog button {
-  background: none;
-  border: none;
-  text-transform: uppercase;
-  font-family: 'Fira Sans', sans-serif;
-  outline: none;
-  cursor: pointer; }
-#add-server-dialog section.cinder-modal-dialog {
-  left: calc(50% - 250px);
-  height: 100%; }
-#add-server-dialog section#add-server-content {
-  width: 500px;
-  height: calc(100% - 100px);
-  overflow-x: hidden;
-  overflow-y: auto; }
-  #add-server-dialog section#add-server-content h1 {
-    font-size: 1.5em; }
-  #add-server-dialog section#add-server-content label {
-    text-transform: uppercase;
-    font-size: 1em; }
-  #add-server-dialog section#add-server-content div {
-    margin: 10px 0 20px 0; }
-  #add-server-dialog section#add-server-content input {
-    width: 100%;
+#add-server-dialog {
+  background: #fff;
+  display: none; }
+  #add-server-dialog button {
+    background: none;
     border: none;
-    border-bottom: 1px solid #ddd; }
-  #add-server-dialog section#add-server-content div#server-add-autojoin-buttons {
-    margin-left: -10px; }
-  #add-server-dialog section#add-server-content button {
-    border: 1px solid transparent;
-    padding: 0 10px;
-    font-size: 0.875em; }
-    #add-server-dialog section#add-server-content button.on {
-      color: #8cd43a; }
-      #add-server-dialog section#add-server-content button.on.selected {
-        border-color: #8cd43a; }
-    #add-server-dialog section#add-server-content button.off {
-      color: #e64d52; }
-      #add-server-dialog section#add-server-content button.off.selected {
-        border-color: #e64d52; }
-  #add-server-dialog section#add-server-content ul#server-autojoin-channels {
-    list-style: none; }
-#add-server-dialog .cinder-modal-buttonbar {
-  height: 37px;
-  line-height: 37px; }
-  #add-server-dialog .cinder-modal-buttonbar button {
-    font-size: 1em;
-    padding: 5px 10px;
-    margin: 0 5px;
-    border-radius: 3px;
-    background: #fff; }
-    #add-server-dialog .cinder-modal-buttonbar button.finish {
-      color: #8cd43a; }
+    text-transform: uppercase;
+    font-family: 'Fira Sans', sans-serif;
+    outline: none;
+    cursor: pointer; }
+  #add-server-dialog section.cinder-modal-dialog {
+    left: calc(50% - 250px);
+    height: 100%; }
+  #add-server-dialog section#add-server-content {
+    width: 500px;
+    height: calc(100% - 100px);
+    overflow-x: hidden;
+    overflow-y: auto; }
+    #add-server-dialog section#add-server-content h1 {
+      font-size: 1.5em; }
+    #add-server-dialog section#add-server-content label {
+      text-transform: uppercase;
+      font-size: 1em; }
+    #add-server-dialog section#add-server-content div {
+      margin: 10px 0 20px 0; }
+    #add-server-dialog section#add-server-content input {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid #ddd; }
+    #add-server-dialog section#add-server-content div#server-add-autojoin-buttons {
+      margin-left: -10px; }
+    #add-server-dialog section#add-server-content button {
+      border: 1px solid transparent;
+      padding: 0 10px;
+      font-size: 0.875em; }
+      #add-server-dialog section#add-server-content button.on {
+        color: #8cd43a; }
+        #add-server-dialog section#add-server-content button.on.selected {
+          border-color: #8cd43a; }
+      #add-server-dialog section#add-server-content button.off {
+        color: #e64d52; }
+        #add-server-dialog section#add-server-content button.off.selected {
+          border-color: #e64d52; }
+    #add-server-dialog section#add-server-content ul#server-autojoin-channels {
+      list-style: none; }
+  #add-server-dialog .cinder-modal-buttonbar {
+    height: 37px;
+    line-height: 37px;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 10px; }
+    #add-server-dialog .cinder-modal-buttonbar button#add-server-finish {
+      font-size: 1em;
+      padding: 5px 10px;
+      border-radius: 3px;
+      margin: auto;
+      border: 1px solid #ddd; }
 
 @media (max-width: 500px) {
   #user-nick {

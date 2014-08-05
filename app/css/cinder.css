@@ -135,7 +135,7 @@ body {
 .normal, h3, h4, h5, h6 {
   font-weight: 400; }
 
-.semibold, h2 {
+.semibold, h2, section.cinder-modal-overlay header.cinder-modal-titlebar h1 {
   font-weight: 500; }
 
 .bold, h1 {
@@ -270,6 +270,9 @@ section.cinder-modal-overlay {
     top: 0;
     left: 0;
     right: 0; }
+    section.cinder-modal-overlay header.cinder-modal-titlebar h1 {
+      font-size: 1.5em;
+      padding: 0 20px; }
     section.cinder-modal-overlay header.cinder-modal-titlebar div.cinder-modal-close {
       float: right;
       padding: 0 20px; }

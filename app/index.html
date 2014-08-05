@@ -209,15 +209,17 @@
 
 	<section class="cinder-modal-overlay" id="add-server-dialog">
 		<header class="cinder-modal-titlebar cf">
+			<h1 class="left">Add server</h1>
 			<div class="cinder-modal-close"><i class="fa fa-times"></i></div>
 		</header>
 		<section class="cinder-modal-dialog">
 			<section id="add-server-content">
-				<h1>Add server</h1>
 				<label for="server-address">Server address</label>
 				<div><input type="text" name="server-address" id="server-address"></div>
 				<label for="server-nick">Nick</label>
 				<div><input type="text" name="server-nick" id="server-nick"></div>
+				<label for="server-realname">Real name</label>
+				<div><input type="text" name="server-realname" id="server-realname"></div>
 				<label for="server-password">Password</label>
 				<div><input type="password" name="server-password" id="server-password"></div>
 				<label>Autoconnect</label>
@@ -233,7 +235,7 @@
 			</section>
 		</section>
 		<footer class="cinder-modal-buttonbar cf">
-			<button class="left cancel">Cancel</button><button class="right finish">Finish</button>
+			<button id="add-server-finish">Finish</button>
 		</footer>
 	</section>
 </body>
