@@ -1,3 +1,4 @@
 .idea/
 cinder
 node_modules
+app/css/*.css
