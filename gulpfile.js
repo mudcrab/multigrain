@@ -25,9 +25,15 @@ gulp.task('html', function () {
     .pipe(connect.reload());
 });
 
+gulp.task('js', function() {
+	gulp.src('./app/js/*.js')
+	.pipe(connect.reload());
+});
+
 gulp.task('watch', function() {
-	gulp.watch(['./app/*.html'], ['html']);
+	gulp.watch(['./app/*.html', './app/templates/*.html.hbs'], ['html']);
     gulp.watch(['./app/scss/*.scss', './app/scss/cinder/*.scss', './app/scss/cinder/ui/*.scss'], ['sass']);
+    gulp.watch(['./app/js/**/*.js'], ['js']);
 });
 
 

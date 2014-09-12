@@ -162,103 +162,99 @@ footer#footer {
 
 // ui components
 
-#add-server-dialog {
-	background: #fff;
-	display: none;
-	button {
-		background: none;
-		border: none;
-		@extend .semibold;
-		text-transform: uppercase;
-		font-family: $cinder-sans-font;
-		outline: none;
-		cursor: pointer;
-	}
-
+#login-dialog {
+	background: rgba(#111, 1);
 	section.cinder-modal-dialog {
-		left: calc(50% - 250px);
-		height: 100%;
-		// transform: translate(-50%, 0);
-	}
-
-	section#add-server-content {
 		width: 500px;
-		height: calc(100% - 100px);
-		overflow-x: hidden;
-		overflow-y: auto;
-
-		h1 {
-			font-size: em(24);
-			@extend .semibold;
-		}
+		height: 264px;
+		left: calc(50% - 250px);
+		top: calc(50% - 132px);
 
 		label {
-			@extend .semibold;
-			text-transform: uppercase;
-			font-size: em(16);
+			font-size: em(18);
+			color: #fff;
 		}
 
-		div {
-			margin: 10px 0 20px 0;
-		}
-
-		input {
+		input.input {
+			@include lineheight(40);
 			width: 100%;
-			border: none;
-			border-bottom: 1px solid $multigrain-border-dark;
+			margin: 10px 0 20px;
+			background: rgba(#353535, 0.3);
+			color: #fff;
 		}
 
-		div#server-add-autojoin-buttons {
-			margin-left: -10px;
-		}
+		button.button {
+			width: 100%;
+			@include lineheight(50);
+			@include translate-prop(all, 100);
+			background: rgba($multigrain-green, 0.7);
+			font-size: em(18);
+			color: #fff;
 
-		button {
-			border: 1px solid transparent;
-			padding: 0 10px;
-			font-size: em(14);
+			&:hover {
+				background: rgba($multigrain-green, 0.5);
+			}
 
 			&:active {
-				@extend .bold;
+				background: rgba($multigrain-green, 0.9);
 			}
-
-			&.on {
-				color: $multigrain-green;
-
-				&.selected {
-					border-color: $multigrain-green;
-				}
-			}
-
-			&.off {
-				color: $multigrain-red;
-
-				&.selected {
-					border-color: $multigrain-red;
-				}
-			}
-		}
-
-		ul#server-autojoin-channels {
-			list-style: none;
 		}
 	}
 
-	.cinder-modal-buttonbar {
-		@include lineheight(37);
-		@extend .row;
-		margin: auto;
+	#server-status {
+		position: fixed;
+		bottom: 10px;
+		right: 10px;
+		z-index: 9999;
+
+		span.txt {
+			display: none;
+			color: #fff;
+			margin-right: 10px;
+			text-transform: uppercase;
+		}
+
+		&.ok {
+			color: $multigrain-green;
+		}
+
+		&.err {
+			color: $multigrain-red;
+		}
+
+		&:hover {
+			span.txt {
+				display: inline;
+			}
+		}
+	}
+
+	#login-msg {
+		color: #fff;
+		@include lineheight(50);
+		margin-top: 20px;
+		padding: 0 15px;
+		display: none;
 		text-align: center;
-		margin-bottom: 10px;
 
-		button#add-server-finish {
-			font-size: em(16);
-			padding: 5px 10px;
-			border-radius: 3px;
-			margin: auto;
-			border: 1px solid $multigrain-border-dark;
+		&.ok {
+			background: rgba($multigrain-green, .7);
+		}
+
+		&.err {
+			background: rgba($multigrain-red, .7);
 		}
 	}
 
+	&.closed {
+		transform: translateX(0px) translateY(100%) translateZ(-1000px);
+		transition: transform 0.4s, opacity 0.4s;
+	}
+
+	&.active {
+		transform: translateX(0px) translateY(0%) translateZ(-1000px);
+		transition: transform 0.4s, opacity 0.4s;
+	}
 }
 
 section#add-server-pane {
@@ -320,6 +316,10 @@ section#add-server-pane {
 	}
 }
 
+section.holder {
+	padding: 10px;
+}
+
 @media (max-width: $cinder-grid-width / 2) {
 	#user-nick {
 		display: none;
@@ -336,7 +336,7 @@ section#add-server-pane {
 		display: none;
 	}
 
-	#add-server-dialog {
+	#login-dialog {
 		section.cinder-modal-dialog {
 			left: 0;
 			width: 100%;

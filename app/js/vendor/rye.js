@@ -11,15 +11,16 @@ window.Cinder = window.Cinder || {};
 		cb.call(this);
 	};
 
-	App.prototype.loadTemplates = function(list)
+	App.prototype.loadTemplates = function(path, list)
 	{
 		var self = this;
 		for(var template in list)
 		{
 			if(list.hasOwnProperty(template))
 			{
-				$.ajax({ url: list[template].path + list[template].file, async: false }).done(function(tpl) {
-					self.templates[template] = tmpl(tpl);
+				$.ajax({ url: path + list[template].file, async: false }).done(function(tpl) {
+					// self.templates[template] = tmpl(tpl);
+					self.templates[template] = Handlebars.compile(tpl);
 				});
 			}
 		}
@@ -27,7 +28,7 @@ window.Cinder = window.Cinder || {};
 
 	var Router = function(routes)
 	{
-		var self = this;
+		var self = this;	
 		this.routes = this.routes || [];
 
 		for(var route in routes)
