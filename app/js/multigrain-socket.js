@@ -1,6 +1,3 @@
-var Ev = new Events();
-
-
 var MultigrainSocket = function(eventHandler, address, port)
 {
 	Socket.call(this, eventHandler, address, port);

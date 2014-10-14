@@ -1,17 +1,31 @@
 {
-  "name": "cinderblocks",
-  "description": "frontend library",
-  "author": "Jevgeni <jevgeni@pitfire.eu>",
+  "name": "back",
   "version": "0.0.1",
-  "repository": {
-    "type": "git",
-    "url": "git://git@code.pitfire.eu:jevgeni/cinderblocks.git"
+  "description": "IRC Client",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {},
+  "author": "Jevgeni",
+  "license": "MIT",
   "devDependencies": {
-    "gulp": "^3.8.1",
+    "backbone": "^1.1.2",
+    "gulp": "^3.8.8",
+    "gulp-concat": "~2.4.1",
     "gulp-connect": "^2.0.5",
-    "gulp-sass": "^0.7.2"
-  },
-  "engine": "node >= 0.6.6"
+    "gulp-declare": "~0.3.0",
+    "gulp-handlebars": "~3.0.1",
+    "gulp-jshint": "^1.8.5",
+    "gulp-sass": "^0.7.2",
+    "gulp-sourcemaps": "~1.2.2",
+    "gulp-uglifyjs": "~0.4.3",
+    "gulp-watch": "~1.0.7",
+    "gulp-wrap": "~0.3.0",
+    "handlebars": "^2.0.0",
+    "jquery": "^2.1.1",
+    "jquery.cookie": "^1.4.1",
+    "jshint-stylish": "^1.0.0",
+    "minivents": "^1.1.6",
+    "underscore": "^1.7.0"
+  }
 }

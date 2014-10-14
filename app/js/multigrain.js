@@ -1,32 +1,36 @@
-window.Multigrain = window.Multigrain || { Controllers: {} };
-Multigrain.Events = new Events();
+window.Multigrain = window.Multigrain || {};
 
-Multigrain.App = new Cinder.App(function() {
-	var self = this;
-	this.socket = new MultigrainSocket(Multigrain.Events, '192.168.12.106', 1337);;
+(function($) {
+	'use strict';
 
-	var tpls = {
-		'Login': {
-			file: 'login.html.hbs',
-		},
-		'chatline': {
-			file: 'chatline.html.hbs'
-		},
-		'connect': {
-			file: 'connect.html.hbs'
+	var Router = Backbone.Router.extend({
+		initialize: function()
+		{
+
 		}
-	};
+	});
 
-	this.loadTemplates('/templates/', tpls);
+	Multigrain.Router = new Router();
+	Backbone.history.start();
+})(jQuery);
+
+$(function() {
+	'use strict';
+
+	Multigrain.Events = new Events();
+	new Multigrain.MainView();
+});
+
+// Multigrain.App = Multigrain.App || new Cinder.App(function() {
+	/*var self = this;
+	this.socket = new MultigrainSocket(Multigrain.Events, '192.168.12.106', 1337);
+	this.templates = MG.templates;
 
 	$.cookie('authenticated', false);
 	$.cookie('username', null);
 	$.cookie('uid', null);
 
-	var loginView = new Multigrain.Controllers.Login({ 
-		template: self.templates.Login,
-		el: 'body'
-	});
+	var loginView = new Multigrain.Controllers.Login();
 
 	this.socket.connect();
 
@@ -37,4 +41,8 @@ Multigrain.App = new Cinder.App(function() {
 	Multigrain.Events.on('socket.connected', function() {
 		$('#server-status').removeClass('err').addClass('ok').find('.txt').text('Server connected');
 	});
-});
+
+	Multigrain.Events.on('socket.raw.message', function(msg) {
+		console.log(msg, JSON.stringify(msg));
+	});*/
+// });
