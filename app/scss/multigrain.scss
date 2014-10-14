@@ -247,19 +247,25 @@ footer#footer {
 	}
 
 	&.closed {
-		transform: translateX(0px) translateY(100%) translateZ(-1000px);
-		transition: transform 0.4s, opacity 0.4s;
+		@include move3d(0px, 100%, 400ms);
 	}
 
 	&.active {
-		transform: translateX(0px) translateY(0%) translateZ(-1000px);
-		transition: transform 0.4s, opacity 0.4s;
+		@include move3d(0px, 0%, 400ms);
 	}
 }
 
 section#add-server-pane {
 	background: #fff;
 	box-shadow: 0 1px 3px rgba(#111, 0.3);
+
+	&.closed {
+		@include move3d(-320px, 0px, 400ms);
+	}
+
+	&.active {
+		@include move3d(0px, 0px, 400ms);
+	}
 
 	header.cinder-pane-header {
 		@include lineheight(49);
@@ -313,6 +319,14 @@ section#add-server-pane {
 		@include lineheight(49);
 		width: 100%;
 		border-top: 1px solid $multigrain-border-dark;
+		margin: 0 10px;
+
+		button.button {
+			background: rgba($multigrain-green, .7);
+			width: calc(100% - 20px);
+			color: #fff;
+			font-size: em(14);
+		}
 	}
 }
 

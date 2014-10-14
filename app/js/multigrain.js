@@ -3,7 +3,7 @@ Multigrain.Events = new Events();
 
 Multigrain.App = new Cinder.App(function() {
 	var self = this;
-	this.socket = new Socket(Multigrain.Events, '192.168.12.106', 1337);;
+	this.socket = new MultigrainSocket(Multigrain.Events, '192.168.12.106', 1337);;
 
 	var tpls = {
 		'Login': {
@@ -12,7 +12,7 @@ Multigrain.App = new Cinder.App(function() {
 		'chatline': {
 			file: 'chatline.html.hbs'
 		},
-		'Lonnect': {
+		'connect': {
 			file: 'connect.html.hbs'
 		}
 	};
@@ -37,19 +37,4 @@ Multigrain.App = new Cinder.App(function() {
 	Multigrain.Events.on('socket.connected', function() {
 		$('#server-status').removeClass('err').addClass('ok').find('.txt').text('Server connected');
 	});
-
-	/*if(!$.cookie('authenticated'))
-	{
-		var loginView = new Multigrain.Controllers.Login({ 
-			template: self.templates.Login,
-			el: 'body'
-		});
-		// $('body').html(loginView.render());
-	}
-	else
-		this.controllers.Main = new Multigrain.Controllers.Main({
-			partials: {
-				chatline: self.templates.chatline
-			}
-		});*/
 });

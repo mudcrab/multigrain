@@ -1,22 +1,30 @@
-<section class="body cf">
-	<div class="left"><span class="label">server address</span><input type="text" value="lolol" id="irc-address"></div>
-	<div class="left"><span class="label">port</span><input type="text" id="irc-port"></div>
-	<div class="separator empty"></div>
-	<div class="left"><span class="label">nick</span><input type="text" id="irc-nickname"></div>
-	<div class="left"><span class="label">password</span><input type="password" id="irc-password"></div>
-</section>
-<section class="body bt">
-	<ul id="irc-channels" class="cf">
-		<li class="irc-channel left">#channel</li>
-		<li class="irc-channel left">#channel</li>
-		<li class="irc-channel left">#channel</li>
-		<li class="irc-channel left">#channel</li>
-		<li class="irc-channel left">#channel</li>
-		<li class="irc-channel left">#channel</li>
-		<li class="irc-channel left">#channel</li>
-		<li class="irc-channel left">#channel</li>
-		<li class="irc-channel left">#channel</li>
-		<li class="irc-channel left">#channel</li>
-	</ul>
-	<div id="add-channel-wrap"><button class="green btn">add channel</button></div>
+<section class="cinder-pane left-pane closed" id="add-server-pane">
+	<header class="cinder-pane-header cf">
+		<div class="cinder-pane-close left"><i class="fa fa-times"></i></div>
+		<div class="cinder-pane-title left">Add server</div>
+	</header>
+	<section class="cinder-pane-content">
+		<form id="add-server-form">
+			<h1 class="label">Server name</h1>
+			<input type="text" name="name" value="local">
+			<h1 class="label">Server address</h1>
+			<input type="text" name="address" value="localhost">
+			<h1 class="label">Nick</h1>
+			<input type="text" name="nick" value="khvhr">
+			<h1 class="label">Realname</h1>
+			<input type="text" name="realname" value="jevgeni">
+			<h1 class="label">Password</h1>
+			<input type="password" name="password" value="asdf1234">
+			<h1 class="label">Autojoin</h1>
+			<input type="hidden" name="autojoin" value="1">
+			<h1 class="label">channels</h1>
+			<input name="xx" type="text" placeholder="type a #channel here">
+			<ul id="channels-list">
+				
+			</ul>
+		</form>
+	</section>
+	<footer class="cinder-pane-footer">
+		<button class="button alt" id="commit-add-server">Add server</button>
+	</footer>
 </section>

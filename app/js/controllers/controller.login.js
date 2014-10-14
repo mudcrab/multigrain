@@ -2,13 +2,16 @@ window.Multigrain = window.Multigrain || { Controllers: {} };
 
 Multigrain.Controllers.Login = function(settings)
 {
+	var self = this;
 	this.events = {
 		'click #login': this.handleLogin
 	};
 
 	Cinder.Controller.call(this, settings, this.events);
-
 	$(settings.el).append(this.render());
+	setTimeout(function() {
+		self.handleLogin()
+	}, 100);
 };
 
 Multigrain.Controllers.Login.prototype = Object.create(Cinder.Controller.prototype);
