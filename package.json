@@ -19,13 +19,14 @@
     "gulp-sass": "^0.7.2",
     "gulp-sourcemaps": "~1.2.2",
     "gulp-uglifyjs": "~0.4.3",
-    "gulp-watch": "~1.0.7",
+    "gulp-watch": "^1.1.0",
     "gulp-wrap": "~0.3.0",
     "handlebars": "^2.0.0",
     "jquery": "^2.1.1",
-    "jquery.cookie": "^1.4.1",
     "jshint-stylish": "^1.0.0",
-    "minivents": "^1.1.6",
-    "underscore": "^1.7.0"
+    "stream-combiner": "^0.2.1",
+    "underscore": "^1.7.0",
+    "jquery.cookie": "^1.4.1",
+    "minivents": "^1.1.6"
   }
 }
