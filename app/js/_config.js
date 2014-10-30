@@ -1,5 +1,9 @@
+window.Multigrain = window.Multigrain || {};
+
 (function() {
 	'use strict';
 
-	window.Multigrain = window.Multigrain || {};
+	Multigrain.Config = {
+		
+	};
 })();

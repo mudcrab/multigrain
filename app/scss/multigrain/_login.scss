@@ -1,0 +1,92 @@
+#login-dialog {
+	background: rgba(#111, 1);
+	section.cinder-modal-dialog {
+		width: 500px;
+		height: 264px;
+		left: calc(50% - 250px);
+		top: calc(50% - 132px);
+
+		label {
+			font-size: em(18);
+			color: #fff;
+		}
+
+		input.input {
+			@include lineheight(40);
+			width: 100%;
+			margin: 10px 0 20px;
+			background: rgba(#353535, 0.3);
+			color: #fff;
+		}
+
+		button.button {
+			width: 100%;
+			@include lineheight(50);
+			@include translate-prop(all, 100);
+			background: rgba($multigrain-green, 0.7);
+			font-size: em(18);
+			color: #fff;
+
+			&:hover {
+				background: rgba($multigrain-green, 0.5);
+			}
+
+			&:active {
+				background: rgba($multigrain-green, 0.9);
+			}
+		}
+	}
+
+	#server-status {
+		position: fixed;
+		bottom: 10px;
+		right: 10px;
+		z-index: 9999;
+
+		span.txt {
+			display: none;
+			color: #fff;
+			margin-right: 10px;
+			text-transform: uppercase;
+		}
+
+		&.ok {
+			color: $multigrain-green;
+		}
+
+		&.err {
+			color: $multigrain-red;
+		}
+
+		&:hover {
+			span.txt {
+				display: inline;
+			}
+		}
+	}
+
+	#login-msg {
+		color: #fff;
+		@include lineheight(50);
+		margin-top: 20px;
+		padding: 0 15px;
+		display: none;
+		text-align: center;
+
+		&.ok {
+			background: rgba($multigrain-green, .7);
+		}
+
+		&.err {
+			background: rgba($multigrain-red, .7);
+		}
+	}
+
+	&.closed {
+		@include move3d(0px, 100%, 400ms);
+	}
+
+	&.active {
+		@include move3d(0px, 0%, 400ms);
+	}
+}

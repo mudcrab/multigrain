@@ -11,7 +11,7 @@ var Socket = function(eventHandler, address, port)
 	this.timeout = 0;
 
 	this.events.on('socket.error', function() {
-		if(self.timeout == 0)
+		if(self.timeout === 0)
 		{
 			self.retryConnection();
 		}
@@ -27,7 +27,7 @@ Socket.prototype.connect = function()
 	self.ws.onmessage = function(e) {
 		self.handleMessage(e.data);
 	};
-	self.ws.onerror = function(e) { self.handleError(e) };
+	self.ws.onerror = function(e) { self.handleError(e); };
 };
 
 Socket.prototype.retryConnection = function()
