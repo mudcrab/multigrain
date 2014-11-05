@@ -5,7 +5,9 @@ window.Multigrain.View = window.Multigrain.View || {};
 	Multigrain.View.Main = Backbone.View.extend({
 
 		events: {
-			'click .toggle-sidebar': 'toggleSidebar'
+			'click .toggle-sidebar': 'toggleSidebar',
+			'click .join': 'joinChannel',
+			'click .new': 'connectServer'
 		},
 		template: Tpl.main,
 		sidebar: {},
@@ -18,6 +20,11 @@ window.Multigrain.View = window.Multigrain.View || {};
 			this.sidebar = new Multigrain.View.Sidebar();
 			Multigrain.App.Chat = new Multigrain.View.Chat();
 			this.input = new Multigrain.View.ChatInput();
+
+			Multigrain.Events.on('socket.irc.servers', function(data) {
+				Multigrain.App.ui.servers = Multigrain.App.ui.servers || [];
+				Multigrain.App.ui.servers = Multigrain.App.ui.servers.concat(data);
+			});
 		},
 
 		toggleSidebar: function()
@@ -25,6 +32,17 @@ window.Multigrain.View = window.Multigrain.View || {};
 			this.$('#sidebar').toggleClass('close');
 			this.$('.toggle-sidebar').toggleClass('active');
 			this.$('#main').toggleClass('full');
+		},
+
+		joinChannel: function()
+		{
+			var joinD = new Multigrain.View.JoinDialog();
+			this.$el.append(joinD.render().el);
+		},
+
+		connectServer: function()
+		{
+			// 
 		},
 
 		render: function() 
