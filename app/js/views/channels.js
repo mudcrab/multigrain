@@ -18,11 +18,14 @@ Multigrain.View = Multigrain.View || {};
 			this.listenTo(Multigrain.App.Channels, 'add', this.addChannel);
 			Multigrain.Events.on('socket.irc.channels', function(data) {
 				data.channels.forEach(function(chan) {
-					Multigrain.App.Channels.add({ 
-						name: chan.channel,
-						nick: chan.nick,
-						server: data.serverName 
-					});
+					if( typeof Multigrain.App.Channels.findWhere({ name: chan.channel, server: data.serverName }) === 'undefined' )
+					{
+						Multigrain.App.Channels.add({ 
+							name: chan.channel,
+							nick: chan.nick,
+							server: data.serverName 
+						});
+					}
 				});
 
 				self.render();

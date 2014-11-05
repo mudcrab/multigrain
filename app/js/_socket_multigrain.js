@@ -45,9 +45,12 @@ MultigrainSocket.prototype.joinChannel = function(name, channel)
 	}));
 };
 
-MultigrainSocket.prototype.partChannel = function()
+MultigrainSocket.prototype.partChannel = function(name, channel)
 {
-	// 
+	this.ws.send(this.socketData('irc.part', {
+		name: name,
+		channel: channel
+	}));
 };
 
 MultigrainSocket.prototype.say = function(name, target, message)
@@ -66,7 +69,7 @@ MultigrainSocket.prototype.getServers = function()
 
 MultigrainSocket.prototype.getServerChannels = function(serverName)
 {
-	this.ws.send(this.socketData('irc.channels', {
+	this.ws.send(this.socketData('irc.getServerChannels', {
 		server: serverName
 	}));
 };

@@ -9,7 +9,8 @@ Multigrain.View = Multigrain.View || {};
 		template: Tpl.channel,
 
 		events: {
-			'click': 'switchChannel'
+			'click': 'switchChannel',
+			'click .channel-close': 'partChannel'
 		},
 
 		initialize: function(options) 
@@ -32,9 +33,19 @@ Multigrain.View = Multigrain.View || {};
 			Multigrain.Events.emit('app.changeChannel', this.model);
 		},
 
-		update: function()
+		partChannel: function(e)
 		{
-			// console.log(this.model.toJSON())
+			e.stopPropagation();
+			var channel = $(e.currentTarget).data();
+			Multigrain.Socket.partChannel(channel.server, channel.name);
+			var channelModel = Multigrain.App.Channels.findWhere({ name: channel.name, server: channel.server });
+			Multigrain.App.Channels.remove(channelModel);
+			this.close();
+		},
+
+		close: function()
+		{
+			this.remove();
 		},
 
 		render: function() 
