@@ -8,11 +8,13 @@ Multigrain.View = Multigrain.View || {};
 
 		bodyTemplate: Tpl.dialog,
 
-		events: {},
+		events: {
+			'click .close, .cancel': 'close',
+		},
 
-		initialize: function(options) 
+		close: function()
 		{
-			// 
+			this.remove();
 		}
 
 	});

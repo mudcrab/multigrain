@@ -14,7 +14,7 @@ window.Multigrain.View = window.Multigrain.View || {};
 		input: {},
 		// sidebar: new Multigrain.View.ChannelsSidebar(),
 
-		initialize: function(options) 
+		initialize: function(options)
 		{
 			$.cookie('authenticated', false);
 			this.sidebar = new Multigrain.View.Sidebar();
@@ -40,12 +40,21 @@ window.Multigrain.View = window.Multigrain.View || {};
 			this.$el.append(joinD.render().el);
 		},
 
-		connectServer: function()
+		addServer: function()
 		{
-			// 
+			console.log('add')
+			var addDialog = new Multigrain.View.AddDialog();
+			this.$el.append(addDialog.render().el);
 		},
 
-		render: function() 
+		connectServer: function()
+		{
+			console.log('add')
+			var addDialog = new Multigrain.View.AddDialog();
+			this.$el.append(addDialog.render().el);
+		},
+
+		render: function()
 		{
 			this.$el.empty();
 			this.$el.append($('<section/>', { id: 'main' }));

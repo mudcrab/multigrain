@@ -13,9 +13,9 @@ Multigrain.View = Multigrain.View || {};
 			'click .confirm': 'joinChannel'
 		},
 
-		initialize: function(options) 
+		initialize: function(options)
 		{
-			// 
+			//
 		},
 
 		joinChannel: function()
@@ -24,15 +24,10 @@ Multigrain.View = Multigrain.View || {};
 			this.remove();
 		},
 
-		close: function()
-		{
-			this.remove();
-		},
-
-		render: function() 
+		render: function()
 		{
 			var self = this;
-			this.$el.html(this.bodyTemplate({ 
+			this.$el.html(this.bodyTemplate({
 				title: 'Join channel',
 				cancel_text: 'Cancel',
 				confirm_text: 'Confirm'

@@ -9,7 +9,7 @@ window.Multigrain.App = window.Multigrain.App || { ui: {} };
 			Multigrain.Events = new Events();
 		},
 
-		routes: 
+		routes:
 		{
 			'': 'index',
 			'login': 'login'
