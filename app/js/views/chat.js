@@ -41,10 +41,11 @@ Multigrain.View = Multigrain.View || {};
 			if(Multigrain.App.ui.active.channel == channel && Multigrain.App.ui.active.server == server)
 			{
 				this.$el.append(this.template(this.chats[cId][i-1]));
+				this.$el.scrollTop(this.$el[0].scrollHeight);
 			}
 		},
 
-		loadMessages: function(server, channel)
+		loadMessages: function(server, channel, server_id, channel_id)
 		{
 			var self = this;
 			var cId = Multigrain.Helper.getChannelId(server, channel);
@@ -54,6 +55,32 @@ Multigrain.View = Multigrain.View || {};
 			{
 				this.chats[cId].forEach(function(line) {
 					self.$el.append(self.template(line));
+				});
+
+				this.$el.scrollTop(this.$el[0].scrollHeight);
+			} else {
+				var url = [
+					Multigrain.Config.API_URL,
+					'messages',
+					server_id,
+					channel_id,
+					100,
+					Multigrain.Config.AUTH_HASH
+				];
+
+				$.get(url.join('/'), function(response) {
+					self.chats[cId] = [];
+
+					response.data.forEach(function(line) {
+						var date = new Date(line.date);
+						self.chats[cId].push({
+							from: line.from,
+							message: line.message,
+							time: date.getHours() + ':' + date.getMinutes()
+						});
+					});
+
+					self.loadMessages(server, channel, server_id, channel_id);
 				});
 			}
 		},

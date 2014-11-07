@@ -28,7 +28,8 @@ Multigrain.View = Multigrain.View || {};
 				server: this.model.get('server')
 			};
 
-			Multigrain.App.Chat.loadMessages(this.model.get('server'), this.model.get('name'));
+			Multigrain.App.Chat.loadMessages(this.model.get('server'), this.model.get('name'),
+				this.model.get('server_id'), this.model.get('channel_id'));
 			$.cookie('activechannel', Multigrain.Helper.getChannelId(this.model.get('server'), this.model.get('name')));
 			Multigrain.Events.emit('app.changeChannel', this.model);
 		},
@@ -36,10 +37,15 @@ Multigrain.View = Multigrain.View || {};
 		partChannel: function(e)
 		{
 			e.stopPropagation();
+			
 			var channel = $(e.currentTarget).data();
 			Multigrain.Socket.partChannel(channel.server, channel.name);
+
 			var channelModel = Multigrain.App.Channels.findWhere({ name: channel.name, server: channel.server });
 			Multigrain.App.Channels.remove(channelModel);
+			
+			$(e.currentTarget).parent().prev().click()
+			
 			this.close();
 		},
 

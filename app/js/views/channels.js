@@ -22,8 +22,10 @@ Multigrain.View = Multigrain.View || {};
 					{
 						Multigrain.App.Channels.add({ 
 							name: chan.channel,
+							channel_id: chan.channel_id,
 							nick: chan.nick,
-							server: data.serverName 
+							server: data.serverName,
+							server_id: data.server_id
 						});
 					}
 				});

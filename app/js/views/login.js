@@ -13,8 +13,8 @@ window.Multigrain.View = window.Multigrain.View || {};
 		initialize: function()
 		{
 			var self = this;
-			Multigrain.Socket = new MultigrainSocket(Multigrain.Events, '192.168.12.105', 1337);
-			// Multigrain.Socket = new MultigrainSocket(Multigrain.Events, '127.0.0.1', 1337);
+			// Multigrain.Socket = new MultigrainSocket(Multigrain.Events, '192.168.12.105', 1337);
+			Multigrain.Socket = new MultigrainSocket(Multigrain.Events, '127.0.0.1', 1337);
 			Multigrain.Socket.connect();
 
 			$.cookie('authenticated', false);

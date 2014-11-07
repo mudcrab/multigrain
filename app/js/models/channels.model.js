@@ -6,7 +6,9 @@ Multigrain.Model = Multigrain.Model || {};
 
 		defaults: {
 			name: '',
+			channel_id: '',
 			server: '',
+			server_id: '',
 			nick: '',
 			nicks: {}
 		},
