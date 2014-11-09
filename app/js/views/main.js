@@ -42,15 +42,13 @@ window.Multigrain.View = window.Multigrain.View || {};
 
 		addServer: function()
 		{
-			console.log('add')
 			var addDialog = new Multigrain.View.AddDialog();
 			this.$el.append(addDialog.render().el);
 		},
 
 		connectServer: function()
 		{
-			console.log('add')
-			var addDialog = new Multigrain.View.AddDialog();
+			var addDialog = new Multigrain.View.AddServerDialog();
 			this.$el.append(addDialog.render().el);
 		},
 
@@ -61,7 +59,7 @@ window.Multigrain.View = window.Multigrain.View || {};
 			this.$el.append(this.sidebar.render().el);
 			this.$('#main').append(Multigrain.App.Chat.render().el);
 			this.$('#main').append(this.input.render().el);
-			this.$el.append('<span class="toggle-sidebar"><i class="ion-navicon"></i></span>')
+			this.$el.append('<span class="toggle-sidebar"><i class="ion-navicon"></i></span>');
 			return this;
 		}
 

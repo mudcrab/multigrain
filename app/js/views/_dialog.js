@@ -8,10 +8,6 @@ Multigrain.View = Multigrain.View || {};
 
 		bodyTemplate: Tpl.dialog,
 
-		events: {
-			'click .close, .cancel': 'close',
-		},
-
 		close: function()
 		{
 			this.remove();

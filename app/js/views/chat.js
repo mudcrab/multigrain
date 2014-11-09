@@ -71,16 +71,19 @@ Multigrain.View = Multigrain.View || {};
 				$.get(url.join('/'), function(response) {
 					self.chats[cId] = [];
 
-					response.data.forEach(function(line) {
-						var date = new Date(line.date);
-						self.chats[cId].push({
-							from: line.from,
-							message: line.message,
-							time: date.getHours() + ':' + date.getMinutes()
+					if(response.status)
+					{
+						response.data.forEach(function(line) {
+							var date = new Date(line.date);
+							self.chats[cId].push({
+								from: line.from,
+								message: line.message,
+								time: date.getHours() + ':' + date.getMinutes()
+							});
 						});
-					});
 
-					self.loadMessages(server, channel, server_id, channel_id);
+						self.loadMessages(server, channel, server_id, channel_id);
+					}
 				});
 			}
 		},

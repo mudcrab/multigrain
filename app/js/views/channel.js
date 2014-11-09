@@ -44,7 +44,7 @@ Multigrain.View = Multigrain.View || {};
 			var channelModel = Multigrain.App.Channels.findWhere({ name: channel.name, server: channel.server });
 			Multigrain.App.Channels.remove(channelModel);
 			
-			$(e.currentTarget).parent().prev().click()
+			$(e.currentTarget).parent().prev().click();
 			
 			this.close();
 		},
