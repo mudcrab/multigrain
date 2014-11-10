@@ -5,17 +5,11 @@ Multigrain.View = Multigrain.View || {};
 	Multigrain.View.JoinDialog = Multigrain.View.Dialog.extend({
 
 		id: 'join-dialog',
-		className: 'dialog',
 		template: Tpl.joinchannel,
 
 		events: {
 			'click .close, .cancel': 'close',
 			'click .confirm': 'joinChannel'
-		},
-
-		initialize: function(options)
-		{
-			//
 		},
 
 		joinChannel: function()
@@ -26,9 +20,11 @@ Multigrain.View = Multigrain.View || {};
 
 		render: function()
 		{
+			// this.preRender();
 			var self = this;
-			this.$el.html(this.bodyTemplate({
-				title: 'Join channel',
+			
+			this.$el.append(this.bodyTemplate({
+				title: self.opts.title,
 				cancel_text: 'Cancel',
 				confirm_text: 'Confirm'
 			}));
@@ -42,6 +38,8 @@ Multigrain.View = Multigrain.View || {};
 
 				self.$el.find('select').append(option);
 			});
+
+			this.$el.addClass('opened');
 			return this;
 		}
 

@@ -41,7 +41,10 @@ window.Multigrain.View = window.Multigrain.View || {};
 
 		joinChannel: function()
 		{
-			var joinD = new Multigrain.View.JoinDialog();
+			var joinD = new Multigrain.View.JoinDialog({
+				title: 'Join channel'
+			});
+			
 			this.$el.append(joinD.render().el);
 		},
 
