@@ -4,7 +4,6 @@ Multigrain.View = Multigrain.View || {};
 Multigrain.View.AddServerDialog = Multigrain.View.Dialog.extend({
 
 	id: 'add-dialog',
-	className: 'dialog',
 	template: Tpl.addserver,
 
 	events: {
@@ -31,14 +30,16 @@ Multigrain.View.AddServerDialog = Multigrain.View.Dialog.extend({
 
 	render: function()
 	{
+		this.preRender();
 		var self = this;
-		this.$el.html(this.bodyTemplate({
+		this.$el.append(this.bodyTemplate({
 			title: 'Add server',
 			cancel_text: 'Cancel',
 			confirm_text: 'Confirm'
 		}));
 
 		this.$el.find('.dialog-content').html(this.template);
+		this.$el.addClass('opened');
 		return this;
 	}
 
