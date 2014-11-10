@@ -18,8 +18,15 @@ Multigrain.View.AddServerDialog = Multigrain.View.Dialog.extend({
 	},
 
 	addServer: function()
-	{
+	{	
+		var data = {
+			name: this.$('#server-name').val(),
+			address: this.$('#server-address').val(),
+			nick: this.$('#server-nick').val(),
+			autojoin: this.$('#server-autojoin').prop('checked')
+		};
 
+		Multigrain.Socket.connectToServer(data);
 	},
 
 	render: function()

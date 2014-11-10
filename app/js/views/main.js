@@ -25,6 +25,11 @@ window.Multigrain.View = window.Multigrain.View || {};
 				Multigrain.App.ui.servers = Multigrain.App.ui.servers || [];
 				Multigrain.App.ui.servers = Multigrain.App.ui.servers.concat(data);
 			});
+
+			Multigrain.Events.on('socket.irc.added', function(data) {
+				Multigrain.App.ui.servers = Multigrain.App.ui.servers || [];
+				Multigrain.App.ui.servers.push(data.name);
+			});
 		},
 
 		toggleSidebar: function()
